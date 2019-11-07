@@ -1,6 +1,8 @@
 package br.com.cointerproject.view;
 
 import android.annotation.SuppressLint;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import android.view.View;
@@ -19,6 +21,11 @@ import br.com.cointerproject.R;
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
+    private TextView txtCadastrar;
+    private Button btAcessar;
+    private EditText areaEmail;
+    private EditText areaSenha;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,22 +33,17 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_tela_login);
         this.logarNoSistema();
     }
-    private TextView txtCadastrar;
-    private Button btAcessar;
-    private EditText areaEmail = findViewById(R.id.campoEmail);;
-    private EditText areaSenha = findViewById(R.id.campoSenha);;
 
     // Usei essa método para ser executado no momento em que a tela for construida.
-
     private void logarNoSistema() {
         txtCadastrar = findViewById(R.id.txtCadastrar);
+        areaEmail = findViewById(R.id.campoEmail);
+        areaSenha = findViewById(R.id.campoSenha);
 
         // O método abaixo verifica se foi clicado no TextView "Cadastrar", se sim, ele irá trocar para a tela de cadastro.
         txtCadastrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                @SuppressLint("WrongConstant") Toast mensagem = Toast.makeText(getApplicationContext(),"clicou em cadastrar",2000);
-                mensagem.show();
             }
         });
 
@@ -53,34 +55,29 @@ public class MainActivity extends AppCompatActivity {
                 String email = areaEmail.getText().toString();
                 String senha = areaSenha.getText().toString();
 
-                @SuppressLint("WrongConstant") Toast mensagem = Toast.makeText(getApplicationContext(),"clicou em acessar",2000);
-                mensagem.show();
+                Toast mensagem;
+
+                if(email.length() > 0 && senha.length() > 0){
+
+
+                }
+                // Essa verificação foi feita para caso a entrada do campo e-mail for igual a 0, significa que o usuário não digitou nada. Então, ele recebe um aviso.
+                else if(email.length() == 0){
+                    mensagem =  Toast.makeText(getApplicationContext(), "Digite o e-mail.", 2000);
+                    mensagem.show();
+                    areaEmail.requestFocus();
+                }
+                // Essa verificação foi feita para caso a entrada do campo senha for igual a 0, significa que o usuário não digitou nada. Então, ele recebe um aviso.
+                else if(senha.length() == 0){
+                    mensagem =  Toast.makeText(getApplicationContext(), "Digite a senha.", 2000);
+                    mensagem.show();
+                    areaSenha.requestFocus();
+                }
+
 
             }
         });
     }
-
-    private boolean validarDados(String email, String senha){
-        if(email.length() > 0 && senha.length() > 0){
-
-
-        }
-        // Essa verificação foi feita para caso a entrada do campo e-mail for igual a 0, significa que o usuário não digitou nada. Então, ele recebe um aviso.
-        else if(email.length() == 0){
-            areaEmail.requestFocus();
-            @SuppressLint("WrongConstant") Toast aviso = Toast.makeText(getApplicationContext(),"Insira o e-mail.",1000);
-            aviso.show();
-            areaEmail.requestFocus();
-        }
-        // Essa verificação foi feita para caso a entrada do campo senha for igual a 0, significa que o usuário não digitou nada. Então, ele recebe um aviso.
-        else if(senha.length() == 0){
-            @SuppressLint("WrongConstant") Toast aviso = Toast.makeText(getApplicationContext(),"Insira a senha.",1000);
-            aviso.show();
-
-        }
-        return false;
-    }
-
 
 
 }
