@@ -1,25 +1,18 @@
 package br.com.cointerproject.view;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
 import android.view.View;
 
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
-
-import com.google.android.material.navigation.NavigationView;
-
-import androidx.drawerlayout.widget.DrawerLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
-import android.view.Menu;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import br.com.cointerproject.R;
 
@@ -30,42 +23,64 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+        setContentView(R.layout.activity_tela_login);
+        this.logarNoSistema();
+    }
+    private TextView txtCadastrar;
+    private Button btAcessar;
+    private EditText areaEmail = findViewById(R.id.campoEmail);;
+    private EditText areaSenha = findViewById(R.id.campoSenha);;
+
+    // Usei essa método para ser executado no momento em que a tela for construida.
+
+    private void logarNoSistema() {
+        txtCadastrar = findViewById(R.id.txtCadastrar);
+
+        // O método abaixo verifica se foi clicado no TextView "Cadastrar", se sim, ele irá trocar para a tela de cadastro.
+        txtCadastrar.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+            public void onClick(View v) {
+                @SuppressLint("WrongConstant") Toast mensagem = Toast.makeText(getApplicationContext(),"clicou em cadastrar",2000);
+                mensagem.show();
             }
         });
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        NavigationView navigationView = findViewById(R.id.nav_view);
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-        mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow,
-                R.id.nav_tools, R.id.nav_share, R.id.nav_send)
-                .setDrawerLayout(drawer)
-                .build();
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-        NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
-        NavigationUI.setupWithNavController(navigationView, navController);
+
+        // O método abaixo foi criado para verificar se o botão acessar foi clicado, se sim, é feito a lógica para validar os dados.
+        btAcessar = findViewById(R.id.btAcessar);
+        btAcessar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String email = areaEmail.getText().toString();
+                String senha = areaSenha.getText().toString();
+
+                @SuppressLint("WrongConstant") Toast mensagem = Toast.makeText(getApplicationContext(),"clicou em acessar",2000);
+                mensagem.show();
+
+            }
+        });
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
+    private boolean validarDados(String email, String senha){
+        if(email.length() > 0 && senha.length() > 0){
+
+
+        }
+        // Essa verificação foi feita para caso a entrada do campo e-mail for igual a 0, significa que o usuário não digitou nada. Então, ele recebe um aviso.
+        else if(email.length() == 0){
+            areaEmail.requestFocus();
+            @SuppressLint("WrongConstant") Toast aviso = Toast.makeText(getApplicationContext(),"Insira o e-mail.",1000);
+            aviso.show();
+            areaEmail.requestFocus();
+        }
+        // Essa verificação foi feita para caso a entrada do campo senha for igual a 0, significa que o usuário não digitou nada. Então, ele recebe um aviso.
+        else if(senha.length() == 0){
+            @SuppressLint("WrongConstant") Toast aviso = Toast.makeText(getApplicationContext(),"Insira a senha.",1000);
+            aviso.show();
+
+        }
+        return false;
     }
 
-    @Override
-    public boolean onSupportNavigateUp() {
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-        return NavigationUI.navigateUp(navController, mAppBarConfiguration)
-                || super.onSupportNavigateUp();
-    }
+
+
 }
