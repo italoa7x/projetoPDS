@@ -1,8 +1,5 @@
 package br.com.cointerproject.view;
 
-import android.annotation.SuppressLint;
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import android.view.View;
@@ -17,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import br.com.cointerproject.R;
+import br.com.cointerproject.view.utils.ValidarEmail;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -58,8 +56,10 @@ public class MainActivity extends AppCompatActivity {
                 Toast mensagem;
 
                 if(email.length() > 0 && senha.length() > 0){
+                    boolean validao = ValidarEmail.validar(email);
+                    if(validao){
 
-
+                    }
                 }
                 // Essa verificação foi feita para caso a entrada do campo e-mail for igual a 0, significa que o usuário não digitou nada. Então, ele recebe um aviso.
                 else if(email.length() == 0){
