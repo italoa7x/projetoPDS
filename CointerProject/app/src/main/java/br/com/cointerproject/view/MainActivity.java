@@ -14,6 +14,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import br.com.cointerproject.R;
+import br.com.cointerproject.controller.ControllerUsuario;
+import br.com.cointerproject.controller.exceptions.ErroAoLogarException;
+import br.com.cointerproject.model.Usuario;
 import br.com.cointerproject.view.utils.ValidarEmail;
 
 public class MainActivity extends AppCompatActivity {
@@ -42,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
         txtCadastrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
             }
         });
 
@@ -54,10 +58,18 @@ public class MainActivity extends AppCompatActivity {
                 String senha = areaSenha.getText().toString();
 
                 Toast mensagem;
+                ControllerUsuario controllerUsuario = new ControllerUsuario();
 
                 if(email.length() > 0 && senha.length() > 0){
                     boolean validao = ValidarEmail.validar(email);
                     if(validao){
+                        try {
+                            Usuario UsuarioValidado = controllerUsuario.logar(email, senha);
+
+                        } catch (ErroAoLogarException e) {
+                            mensagem = Toast.makeText(getApplicationContext(), e.getMessage(), 2000);
+                            mensagem.show();
+                        }
 
                     }
                 }
