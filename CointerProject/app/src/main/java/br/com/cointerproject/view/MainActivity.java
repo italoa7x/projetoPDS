@@ -2,99 +2,70 @@ package br.com.cointerproject.view;
 
 import android.os.Bundle;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
+
 import android.view.View;
 
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
+import androidx.navigation.ui.NavigationUI;
+
+import com.google.android.material.navigation.NavigationView;
+
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.view.Menu;
 
 import br.com.cointerproject.R;
-import br.com.cointerproject.controller.ControllerUsuario;
-import br.com.cointerproject.model.exceptions.ErroAoLogarException;
-import br.com.cointerproject.model.Usuario;
-import br.com.cointerproject.view.utils.ValidarEmail;
 
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
-    private TextView txtCadastrar;
-    private Button btAcessar;
-    private EditText areaEmail;
-    private EditText areaSenha;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tela_login);
-        this.logarNoSistema();
-    }
-
-    // Usei essa método para ser executado no momento em que a tela for construida.
-    private void logarNoSistema() {
-        txtCadastrar = findViewById(R.id.txtCadastrar);
-        areaEmail = findViewById(R.id.campoEmail);
-        areaSenha = findViewById(R.id.campoSenha);
-
-        // O método abaixo verifica se foi clicado no TextView "Cadastrar", se sim, ele irá trocar para a tela de cadastro.
-        txtCadastrar.setOnClickListener(new View.OnClickListener() {
+        setContentView(R.layout.activity_main);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        FloatingActionButton fab = findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-
+            public void onClick(View view) {
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
             }
         });
-
-        // O método abaixo foi criado para verificar se o botão acessar foi clicado, se sim, é feito a lógica para validar os dados.
-        btAcessar = findViewById(R.id.btAcessar);
-        btAcessar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String email = areaEmail.getText().toString();
-                String senha = areaSenha.getText().toString();
-
-                Toast mensagem;
-                ControllerUsuario controllerUsuario = new ControllerUsuario();
-
-                if(email.length() > 0 && senha.length() > 0){
-                    boolean validao = ValidarEmail.validar(email);
-                    if(validao){
-                        try {
-                            Usuario user = new Usuario();
-                            user.setEmail(email);
-                            user.setSenha(senha);
-                            Usuario usuarioValidado = controllerUsuario.logar(user);
-                            if(usuarioValidado != null){
-
-                            }
-                        } catch (ErroAoLogarException e) {
-                            mensagem = Toast.makeText(getApplicationContext(), e.getMessage(), 2000);
-                            mensagem.show();
-                        }
-
-                    }
-                }
-                // Essa verificação foi feita para caso a entrada do campo e-mail for igual a 0, significa que o usuário não digitou nada. Então, ele recebe um aviso.
-                else if(email.length() == 0){
-                    mensagem =  Toast.makeText(getApplicationContext(), "Digite o e-mail.", 2000);
-                    mensagem.show();
-                    areaEmail.requestFocus();
-                }
-                // Essa verificação foi feita para caso a entrada do campo senha for igual a 0, significa que o usuário não digitou nada. Então, ele recebe um aviso.
-                else if(senha.length() == 0){
-                    mensagem =  Toast.makeText(getApplicationContext(), "Digite a senha.", 2000);
-                    mensagem.show();
-                    areaSenha.requestFocus();
-                }
-
-
-            }
-        });
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        // Passing each menu ID as a set of Ids because each
+        // menu should be considered as top level destinations.
+        mAppBarConfiguration = new AppBarConfiguration.Builder(
+                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow,
+                R.id.nav_tools, R.id.nav_share, R.id.nav_send)
+                .setDrawerLayout(drawer)
+                .build();
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
+        NavigationUI.setupWithNavController(navigationView, navController);
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
 
+    @Override
+    public boolean onSupportNavigateUp() {
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        return NavigationUI.navigateUp(navController, mAppBarConfiguration)
+                || super.onSupportNavigateUp();
+    }
 }
