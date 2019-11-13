@@ -1,4 +1,4 @@
-package br.com.cointerproject.controller.exceptions;
+package br.com.cointerproject.model.exceptions;
 
 public class ErroAoLogarException extends Exception {
     public ErroAoLogarException() {
