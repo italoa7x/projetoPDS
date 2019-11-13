@@ -2,19 +2,16 @@ package br.com.cointerproject.model;
 
 import java.util.Objects;
 
-import br.com.cointerproject.dao.UsuarioDAO;
-import br.com.cointerproject.model.exceptions.ErroAoLogarException;
-
 public class Usuario {
 
     private String nome;
     private String email;
     private String senha;
     private Integer id;
-    private UsuarioDAO usuarioDAO;
+
 
     public Usuario(){
-        usuarioDAO = new UsuarioDAO();
+
     }
 
     public Usuario(String nome, String email, String senha) {
@@ -73,12 +70,4 @@ public class Usuario {
     public String toString(){
         return "Nome: "+this.getNome()+"\nLogin: "+this.getEmail()+"\nSenha: "+this.getSenha();
     }
-
-    // Criei esse método para poder receber um objeto Usuario populado com email e senha, assim eu passo ele para a classe usuarioDAO e faço a verificação
-    // se ele está no banco de dados e o retorno em seguida para a tela de login.
-    public Usuario logarNoSistema(Usuario user) throws ErroAoLogarException {
-        return usuarioDAO.logarNoSistema(user);
-    }
-
-
 }
