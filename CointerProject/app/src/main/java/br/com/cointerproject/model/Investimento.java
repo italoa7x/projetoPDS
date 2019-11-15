@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import br.com.cointerproject.dao.IInvestimentoDao;
+import br.com.cointerproject.dto.InvestimentoDTO;
+
 public class Investimento {
     private String nome;
     private double valor;
@@ -13,7 +16,7 @@ public class Investimento {
     private List lucro;
     private Fonte fonte;
     private Usuario usuario;
-
+    private IInvestimentoDao investimentoDao;
     public Investimento(String nome, double valor, Usuario usuario) {
         this.nome = nome;
         this.valor = valor;
@@ -22,6 +25,25 @@ public class Investimento {
 
 
 
+    public void atualizar(InvestimentoDTO investimento){
+        investimentoDao.atualizar(investimento);
+    }
+
+    public void salvar(InvestimentoDTO investimento){
+        investimentoDao.salvar(investimento);
+    }
+
+    public void excluir(InvestimentoDTO investimento){
+        investimentoDao.excluir(investimento);
+    }
+
+    public List buscarPorId(InvestimentoDTO investimento){
+        return investimentoDao.buscarPorId(investimento);
+    }
+
+    public List listar(){
+        return investimentoDao.listar();
+    }
 
 
     public String getNome() {

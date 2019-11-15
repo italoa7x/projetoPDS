@@ -5,7 +5,7 @@ import java.util.List;
 
 import br.com.cointerproject.model.Fonte;
 import br.com.cointerproject.model.Status;
-import br.com.cointerproject.model.Usuario;
+
 
 public class InvestimentoDTO {
 
@@ -14,9 +14,11 @@ public class InvestimentoDTO {
     private Status status;
     private Date inicio;
     private Date fim;
-    private List lucroDTO;
+    private List lucro;
     private Fonte fonte;
     private UsuarioDTO usuario;
+
+    private List investimentos;
 
     public InvestimentoDTO(String nome, double valor, UsuarioDTO usuario) {
         this.nome = nome;
@@ -64,12 +66,12 @@ public class InvestimentoDTO {
         this.fim = fim;
     }
 
-    public List getLucroDTO() {
-        return lucroDTO;
+    public List getLucro() {
+        return lucro;
     }
 
-    public void setLucroDTO(List lucroDTO) {
-        this.lucroDTO = lucroDTO;
+    public void setLucro(List lucroDTO) {
+        this.lucro = lucroDTO;
     }
 
     public Fonte getFonte() {
@@ -86,5 +88,13 @@ public class InvestimentoDTO {
 
     public void setUsuario(UsuarioDTO usuario) {
         this.usuario = usuario;
+    }
+
+    public List getInvestimentos() {
+        return investimentos;
+    }
+
+    public void setInvestimentos(List investimentos) {
+        this.investimentos = investimentos;
     }
 }
