@@ -1,6 +1,8 @@
 package br.com.cointerproject.model;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class Investimento {
     private String nome;
@@ -8,7 +10,8 @@ public class Investimento {
     private Status status;
     private Date inicio;
     private Date fim;
-    private Lucro lucro;
+    private List lucro;
+    private Fonte fonte;
     private Usuario usuario;
 
     public Investimento(String nome, double valor, Usuario usuario) {
@@ -17,7 +20,7 @@ public class Investimento {
         this.usuario = usuario;
     }
 
-    
+
 
 
 
@@ -61,11 +64,11 @@ public class Investimento {
         this.fim = fim;
     }
 
-    public Lucro getLucro() {
+    public List getLucro() {
         return lucro;
     }
 
-    public void setLucro(Lucro lucro) {
+    public void setLucro(List lucro) {
         this.lucro = lucro;
     }
 
@@ -75,5 +78,13 @@ public class Investimento {
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
+    }
+
+    public Fonte getFonte() {
+        return fonte;
+    }
+
+    public void setFonte(Fonte fonte) {
+        this.fonte = fonte;
     }
 }
