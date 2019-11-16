@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         // O método abaixo foi criado para verificar se o botão acessar foi clicado, se sim, é feito a lógica para validar os dados.
-        btAcessar = findViewById(R.id.btAcessar);
+        btAcessar = findViewById(R.id.btcadastrar);
         btAcessar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
