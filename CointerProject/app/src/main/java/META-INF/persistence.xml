@@ -12,7 +12,7 @@
     <properties>
       <!-- Configurações do JDBC -->
       <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
-      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/banco_pizza?useUnicode=true&amp;characterEncoding=utf8&amp;createDatabaseIfNotExist=true&amp;useSSL=false&amp;serverTimezone=UTC"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://cointer-sql.mysql.database.azure.com:3306/db_cointer?useUnicode=true&amp;characterEncoding=utf8&amp;createDatabaseIfNotExist=true&amp;useSSL=true&amp;requireSSL=false&amp;serverTimezone=UTC"/>
       <property name="javax.persistence.jdbc.user" value="cointeradmin@cointer-sql"/>
       <property name="javax.persistence.jdbc.password" value="Cointer@10"/>
       <!-- Configurações do Hibernate -->
@@ -23,3 +23,4 @@
     </properties>
   </persistence-unit>
 </persistence>
+
