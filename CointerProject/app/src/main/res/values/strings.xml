@@ -15,4 +15,6 @@
     <string name="menu_send">Send</string>
     <string name="valor_total_investido">Valor total investido</string>
     <string name="r">R$</string>
+    <string name="nome">nome</string>
+    <string name="todo">TODO</string>
 </resources>
