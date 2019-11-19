@@ -17,7 +17,7 @@ import br.com.cointerproject.R;
 import br.com.cointerproject.controller.ControllerUsuario;
 import br.com.cointerproject.model.exceptions.ErroAoLogarException;
 import br.com.cointerproject.model.Usuario;
-import br.com.cointerproject.view.utils.ValidarEmail;
+import br.com.cointerproject.model.Validacao;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
                 ControllerUsuario controllerUsuario = new ControllerUsuario();
 
                 if(email.length() > 0 && senha.length() > 0){
-                    boolean validao = ValidarEmail.validar(email);
+                    boolean validao = Validacao.validarEmail(email);
                     if(validao){
                         try {
                             Usuario user = new Usuario();
