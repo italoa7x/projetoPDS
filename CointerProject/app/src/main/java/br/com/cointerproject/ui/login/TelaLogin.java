@@ -36,7 +36,7 @@ public class TelaLogin extends AppCompatActivity {
 
         final EditText usernameEditText = findViewById(R.id.campoEmail);
         final EditText passwordEditText = findViewById(R.id.campoSenha);
-        final Button loginButton = findViewById(R.id.btAcessar);
+        final Button loginButton = findViewById(R.id.btcadastrar);
 
         loginViewModel.getLoginFormState().observe(this, new Observer<LoginFormState>() {
             @Override
