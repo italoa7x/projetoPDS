@@ -1,25 +1,36 @@
 package br.com.cointerproject.dao;
 
-import javax.persistence.EntityManager;
+import java.util.Collection;
 
-import br.com.cointerproject.dto.UsuarioDTO;
+import br.com.cointerproject.dao.Interfaces.ITUsuarioDAO;
+import br.com.cointerproject.model.Usuario;
+import br.com.cointerproject.model.exceptions.ErroAoLogarException;
+import br.com.cointerproject.model.exceptions.UsuarioNaoEncontradoException;
 
-public class UsuarioDAO extends FactoryEntity{
+public class UsuarioDAO implements ITUsuarioDAO {
 
-    private EntityManager entidade;
+    @Override
+    public Usuario salvar(Usuario u) {
+        return null;
+    }
 
-    public boolean salvar(UsuarioDTO obj) throws Exception {
-        entidade = super.getIntity();
-        entidade.getTransaction().begin();
-        try {
-            entidade.persist(obj);
-            entidade.getTransaction().commit();
-            return true;
-        } catch (Exception e) {
-            entidade.getTransaction().rollback();
-            throw new Exception(e.getMessage());
-        } finally {
-            entidade.close();
-        }
+    @Override
+    public Collection<Usuario> listar() {
+        return null;
+    }
+
+    @Override
+    public Usuario excluir(Integer id) throws UsuarioNaoEncontradoException {
+        return null;
+    }
+
+    @Override
+    public Usuario atualizar(Usuario novo) throws UsuarioNaoEncontradoException {
+        return null;
+    }
+
+    @Override
+    public Usuario logarNoSistema(Usuario usuario) throws ErroAoLogarException {
+        return null;
     }
 }
