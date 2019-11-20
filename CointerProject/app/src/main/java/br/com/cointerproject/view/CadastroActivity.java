@@ -21,20 +21,19 @@ public class CadastroActivity extends AppCompatActivity {
         EditText tiNome = (EditText) (findViewById(R.id.editTextNome));
         EditText tiEmail = (EditText) (findViewById(R.id.editTextEmail));
         EditText tiSenha = (EditText) (findViewById(R.id.editTextSenha));
-        EditText tiDataNasc = (EditText) (findViewById(R.id.editTextDataNasc));
+        EditText tiSenha2 = (EditText) (findViewById(R.id.editTextSenha2));
 
         boolean ok = true;
 
         ok = Validacao.validarEmail(tiEmail.getText().toString());
         ok = Validacao.validarSenha(tiSenha.getText().toString(), tiNome.getText().toString());
-        ok = Validacao.validarDataNasc(tiDataNasc.getText().toString());
+        if (tiSenha.getText().toString().equals(tiSenha2.getText().toString()) == false) ok = false;
 
         if (ok == true) {
             Usuario usuario = new Usuario();
             usuario.setNome(tiNome.getText().toString());
             usuario.setEmail(tiEmail.getText().toString());
             usuario.setSenha(tiSenha.getText().toString());
-            usuario.setDataNasc(tiDataNasc.getText().toString());
 
             UsuarioDAO dao = new UsuarioDAO();
             dao.salvar(usuario);
