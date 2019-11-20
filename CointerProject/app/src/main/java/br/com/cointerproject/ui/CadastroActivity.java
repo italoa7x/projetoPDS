@@ -1,6 +1,8 @@
-package br.com.cointerproject.view;
+package br.com.cointerproject.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -15,29 +17,29 @@ public class CadastroActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro);
+
     }
 
     public void cadastrar(View view) {
         EditText tiNome = (EditText) (findViewById(R.id.editTextNome));
         EditText tiEmail = (EditText) (findViewById(R.id.editTextEmail));
         EditText tiSenha = (EditText) (findViewById(R.id.editTextSenha));
-        EditText tiDataNasc = (EditText) (findViewById(R.id.editTextDataNasc));
 
         boolean ok = true;
 
         ok = Validacao.validarEmail(tiEmail.getText().toString());
         ok = Validacao.validarSenha(tiSenha.getText().toString(), tiNome.getText().toString());
-        ok = Validacao.validarDataNasc(tiDataNasc.getText().toString());
 
         if (ok == true) {
             Usuario usuario = new Usuario();
             usuario.setNome(tiNome.getText().toString());
             usuario.setEmail(tiEmail.getText().toString());
             usuario.setSenha(tiSenha.getText().toString());
-            usuario.setDataNasc(tiDataNasc.getText().toString());
 
             UsuarioDAO dao = new UsuarioDAO();
-            dao.salvar(usuario);
+            if(dao.salvar(usuario) != null){
+                setContentView(R.layout.activity_tela_login);
+            }
         }
     }
 }

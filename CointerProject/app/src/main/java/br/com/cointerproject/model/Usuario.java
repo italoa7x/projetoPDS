@@ -2,15 +2,14 @@ package br.com.cointerproject.model;
 
 import java.util.Objects;
 
-import br.com.cointerproject.dao.UsuarioDAO;
-import br.com.cointerproject.model.exceptions.ErroAoLogarException;
+import br.com.cointerproject.dao.*;
+import br.com.cointerproject.model.exceptions.*;
 
 public class Usuario {
 
     private String nome;
     private String email;
     private String senha;
-    private String dataNasc;
     private Integer id;
     private UsuarioDAO usuarioDAO;
 
@@ -56,10 +55,6 @@ public class Usuario {
     public void setId(Integer id) {
         this.id = id;
     }
-
-    public void setDataNasc(String dataNasc) { this.dataNasc = dataNasc; }
-
-    public String getDataNasc() { return dataNasc; }
 
     @Override
     public boolean equals(Object o) {

@@ -40,8 +40,4 @@ public abstract class Validacao {
         return false;
     }
 
-    public static boolean validarDataNasc(String dataNasc) {
-        return true;
-    }
-
 }

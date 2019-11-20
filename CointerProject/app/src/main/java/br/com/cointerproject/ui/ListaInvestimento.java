@@ -1,4 +1,4 @@
-package br.com.cointerproject.view;
+package br.com.cointerproject.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;

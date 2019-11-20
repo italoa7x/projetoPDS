@@ -2,10 +2,9 @@ package br.com.cointerproject.dao;
 
 import java.util.Collection;
 
-import br.com.cointerproject.dao.Interfaces.ITUsuarioDAO;
+import br.com.cointerproject.dao.Interfaces.*;
 import br.com.cointerproject.model.Usuario;
-import br.com.cointerproject.model.exceptions.ErroAoLogarException;
-import br.com.cointerproject.model.exceptions.UsuarioNaoEncontradoException;
+import br.com.cointerproject.model.exceptions.*;
 
 public class UsuarioDAO implements ITUsuarioDAO {
 

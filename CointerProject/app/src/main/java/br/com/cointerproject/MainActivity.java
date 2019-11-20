@@ -1,5 +1,6 @@
-package br.com.cointerproject.view;
+package br.com.cointerproject;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import android.view.View;
@@ -12,12 +13,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import br.com.cointerproject.model.*;
+import br.com.cointerproject.controller.*;
+import br.com.cointerproject.model.exceptions.*;
 
-import br.com.cointerproject.R;
-import br.com.cointerproject.controller.ControllerUsuario;
-import br.com.cointerproject.model.exceptions.ErroAoLogarException;
-import br.com.cointerproject.model.Usuario;
-import br.com.cointerproject.model.Validacao;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -32,20 +31,23 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_login);
-        this.logarNoSistema();
-    }
 
-    // Usei essa método para ser executado no momento em que a tela for construida.
-    private void logarNoSistema() {
         txtCadastrar = findViewById(R.id.txtCadastrar);
         areaEmail = findViewById(R.id.campoEmail);
         areaSenha = findViewById(R.id.campoSenha);
 
+        this.logarNoSistema();
+
+    }
+
+
+    // Usei essa método para ser executado no momento em que a tela for construida.
+    private void logarNoSistema() {
         // O método abaixo verifica se foi clicado no TextView "Cadastrar", se sim, ele irá trocar para a tela de cadastro.
         txtCadastrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+               setContentView(R.layout.activity_cadastro);
             }
         });
 
@@ -56,7 +58,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String email = areaEmail.getText().toString();
                 String senha = areaSenha.getText().toString();
-
                 Toast mensagem;
                 ControllerUsuario controllerUsuario = new ControllerUsuario();
 

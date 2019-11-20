@@ -1,4 +1,4 @@
-package br.com.cointerproject.ui.login;
+package br.com.cointerproject.ui;
 
 /**
  * Class exposing authenticated user details to the UI.
