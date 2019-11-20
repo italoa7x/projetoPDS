@@ -3,8 +3,8 @@ package br.com.cointerproject.dao.Interfaces;
 import java.util.Collection;
 
 import br.com.cointerproject.model.Usuario;
-import br.com.cointerproject.model.exceptions.*;
-import br.com.cointerproject.model.exceptions.*;
+import br.com.cointerproject.model.exceptions.ErroAoLogarException;
+import br.com.cointerproject.model.exceptions.UsuarioNaoEncontradoException;
 
 public interface ITUsuarioDAO {
 

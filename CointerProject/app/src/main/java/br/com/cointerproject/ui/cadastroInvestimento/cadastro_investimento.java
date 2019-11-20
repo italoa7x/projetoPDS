@@ -1,4 +1,4 @@
-package br.com.cointerproject.ui;
+package br.com.cointerproject.ui.cadastroInvestimento;
 
 import androidx.appcompat.app.AppCompatActivity;
 

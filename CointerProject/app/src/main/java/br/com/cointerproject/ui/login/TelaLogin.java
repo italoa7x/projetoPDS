@@ -1,11 +1,10 @@
-package br.com.cointerproject.ui;
+package br.com.cointerproject.ui.login;
 
 import android.app.Activity;
 
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -22,7 +21,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import br.com.cointerproject.MainActivity;
 import br.com.cointerproject.R;
 
 public class TelaLogin extends AppCompatActivity {
@@ -125,5 +123,8 @@ public class TelaLogin extends AppCompatActivity {
     private void showLoginFailed(@StringRes Integer errorString) {
         Toast.makeText(getApplicationContext(), errorString, Toast.LENGTH_SHORT).show();
     }
+
+
+
 
 }

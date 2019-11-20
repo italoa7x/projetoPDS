@@ -1,7 +1,7 @@
 package br.com.cointerproject.controller;
 
-import br.com.cointerproject.model.*;
-import br.com.cointerproject.model.exceptions.*;
+import br.com.cointerproject.model.exceptions.ErroAoLogarException;
+import br.com.cointerproject.model.Usuario;
 
 public class ControllerUsuario {
 

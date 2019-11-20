@@ -33,4 +33,5 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
     api 'org.json:json:20190722'
+    api 'org.hibernate:hibernate-core:5.4.8.Final'
 }

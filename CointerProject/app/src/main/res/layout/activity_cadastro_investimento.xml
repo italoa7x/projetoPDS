@@ -7,13 +7,13 @@
     android:background="@color/cor_padrao_telas"
     android:backgroundTintMode="add"
     android:clickable="true"
-    tools:context=".ui.cadastro_investimento">
+    tools:context=".ui.cadastroInvestimento.cadastro_investimento">
 
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="123dp"
         android:layout_height="126dp"
-        android:layout_marginTop="52dp"
+        app:layout_constraintBottom_toTopOf="@+id/txnome"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -24,10 +24,9 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="54dp"
-
+        android:layout_marginTop="232dp"
         android:layout_marginEnd="24dp"
-        android:layout_marginBottom="40dp"
+
         android:hint="Nome"
         android:inputType="textEmailAddress"
         android:selectAllOnFocus="true"
@@ -36,10 +35,9 @@
         android:textColorHint="#FFFF"
         android:textColorLink="#00000000"
         android:textCursorDrawable="@color/colorWhite"
-        app:layout_constraintBottom_toTopOf="@+id/txvalor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/txvalor"
@@ -67,12 +65,10 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="40dp"
         android:layout_marginEnd="24dp"
-        android:layout_marginBottom="24dp"
         android:backgroundTint="#FFFFFF"
         android:spinnerMode="dropdown"
-        app:layout_constraintBottom_toTopOf="@+id/spinerfonte"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -83,11 +79,9 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="40dp"
         android:layout_marginEnd="24dp"
-        android:layout_marginBottom="24dp"
         android:backgroundTint="#FFFFFF"
-        app:layout_constraintBottom_toTopOf="@+id/btcadastrar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"

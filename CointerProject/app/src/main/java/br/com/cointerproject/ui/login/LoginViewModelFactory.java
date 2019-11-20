@@ -1,4 +1,4 @@
-package br.com.cointerproject.ui;
+package br.com.cointerproject.ui.login;
 
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
