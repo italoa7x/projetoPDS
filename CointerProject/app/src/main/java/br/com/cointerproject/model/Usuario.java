@@ -1,8 +1,11 @@
 package br.com.cointerproject.model;
 
+import android.content.Context;
+
 import java.util.Objects;
 
 import br.com.cointerproject.dao.UsuarioDAO;
+import br.com.cointerproject.dto.UsuarioDTO;
 import br.com.cointerproject.model.exceptions.ErroAoLogarException;
 
 public class Usuario {
@@ -10,12 +13,11 @@ public class Usuario {
     private String nome;
     private String email;
     private String senha;
-    private String dataNasc;
     private Integer id;
     private UsuarioDAO usuarioDAO;
 
-    public Usuario(){
-        usuarioDAO = new UsuarioDAO();
+    public Usuario(Context context){
+        usuarioDAO = new UsuarioDAO(context);
     }
 
     public Usuario(String nome, String email, String senha) {
@@ -57,10 +59,6 @@ public class Usuario {
         this.id = id;
     }
 
-    public void setDataNasc(String dataNasc) { this.dataNasc = dataNasc; }
-
-    public String getDataNasc() { return dataNasc; }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -81,9 +79,13 @@ public class Usuario {
 
     // Criei esse método para poder receber um objeto Usuario populado com email e senha, assim eu passo ele para a classe usuarioDAO e faço a verificação
     // se ele está no banco de dados e o retorno em seguida para a tela de login.
-    public Usuario logarNoSistema(Usuario user) throws ErroAoLogarException {
+    public UsuarioDTO logarNoSistema(UsuarioDTO user) throws ErroAoLogarException {
         return usuarioDAO.logarNoSistema(user);
     }
 
+    // O método abaixo recebe uma instância de DTO populada e manda para a classe que acessa o banco.
+    public UsuarioDTO salvar(UsuarioDTO user){
+        return usuarioDAO.salvar(user);
+    }
 
 }
