@@ -26,7 +26,7 @@ public class cadastro_investimento extends AppCompatActivity {
 
         nome = findViewById(R.id.txnome);
         valor = findViewById(R.id.txvalor);
-        cadastro = findViewById(R.id.btcadastrar);
+        cadastro = findViewById(R.id.btAcessar);
         spinnerMercado = findViewById(R.id.spinermercado);
         spinnerFonte = findViewById(R.id.spinerfonte);
     }

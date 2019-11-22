@@ -1,4 +1,4 @@
-package br.com.cointerproject.model;
+package br.com.cointerproject.ui.utils;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -39,9 +39,4 @@ public abstract class Validacao {
 
         return false;
     }
-
-    public static boolean validarDataNasc(String dataNasc) {
-        return true;
-    }
-
 }

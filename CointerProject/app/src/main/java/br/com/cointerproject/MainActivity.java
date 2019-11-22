@@ -1,5 +1,6 @@
-package br.com.cointerproject.view;
+package br.com.cointerproject;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import android.view.View;
@@ -13,11 +14,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import br.com.cointerproject.R;
 import br.com.cointerproject.controller.ControllerUsuario;
+import br.com.cointerproject.dto.UsuarioDTO;
 import br.com.cointerproject.model.exceptions.ErroAoLogarException;
-import br.com.cointerproject.model.Usuario;
-import br.com.cointerproject.model.Validacao;
+import br.com.cointerproject.ui.utils.Validacao;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -32,25 +32,47 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_login);
-        this.logarNoSistema();
-    }
-
-    // Usei essa método para ser executado no momento em que a tela for construida.
-    private void logarNoSistema() {
         txtCadastrar = findViewById(R.id.txtCadastrar);
         areaEmail = findViewById(R.id.campoEmail);
         areaSenha = findViewById(R.id.campoSenha);
+        btAcessar = findViewById(R.id.btAcessar);
 
-        // O método abaixo verifica se foi clicado no TextView "Cadastrar", se sim, ele irá trocar para a tela de cadastro.
+        // O código abaixo chama a tela de cadastro.
         txtCadastrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                //setContentView(R.layout.activity_cadastro_usuario);
+                Intent t = new Intent(MainActivity.this, NovoUsuario.class);
+                startActivity(t);
             }
         });
+        // O código abaixo coleta os dados digitado pelo usuário e faz o login.
+        btAcessar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String email = areaEmail.getText().toString();
+                String senha = areaSenha.getText().toString();
+                ControllerUsuario controllerUsuario = new ControllerUsuario(getApplicationContext());
+                UsuarioDTO user = new UsuarioDTO();
+                user.setEmail(email);
+                user.setSenha(senha);
+                try {
+                    user = controllerUsuario.logar(user);
+                    if(user != null){
+                        Toast.makeText(MainActivity.this, user.toString(), Toast.LENGTH_SHORT).show();
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
 
+    
+    // Usei essa método para ser executado no momento em que a tela for construida.
+    private void logarNoSistema() {
         // O método abaixo foi criado para verificar se o botão acessar foi clicado, se sim, é feito a lógica para validar os dados.
-        btAcessar = findViewById(R.id.btcadastrar);
+        btAcessar = findViewById(R.id.btAcessar);
         btAcessar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -58,16 +80,16 @@ public class MainActivity extends AppCompatActivity {
                 String senha = areaSenha.getText().toString();
 
                 Toast mensagem;
-                ControllerUsuario controllerUsuario = new ControllerUsuario();
+                ControllerUsuario controllerUsuario = new ControllerUsuario(getApplicationContext());
 
                 if(email.length() > 0 && senha.length() > 0){
                     boolean validao = Validacao.validarEmail(email);
                     if(validao){
                         try {
-                            Usuario user = new Usuario();
+                            UsuarioDTO user = new UsuarioDTO();
                             user.setEmail(email);
                             user.setSenha(senha);
-                            Usuario usuarioValidado = controllerUsuario.logar(user);
+                            UsuarioDTO usuarioValidado = controllerUsuario.logar(user);
                             if(usuarioValidado != null){
 
                             }

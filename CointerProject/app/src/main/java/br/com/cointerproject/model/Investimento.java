@@ -1,10 +1,9 @@
 package br.com.cointerproject.model;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import br.com.cointerproject.dao.IInvestimentoDao;
+import br.com.cointerproject.dao.Interfaces.IInvestimentoDao;
 import br.com.cointerproject.dto.InvestimentoDTO;
 
 public class Investimento {

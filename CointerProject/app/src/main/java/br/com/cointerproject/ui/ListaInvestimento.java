@@ -1,4 +1,4 @@
-package br.com.cointerproject.view;
+package br.com.cointerproject.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
@@ -17,7 +17,7 @@ public class ListaInvestimento extends AppCompatActivity {
     private ListView list;
     int[] images ;
     ArrayList<String> arrayList;
-    String[] moedas = {"Pensão","Amor","Carro","Bitcoin","Euro",};
+    String[] moedas = {"Dolar","Bitcoin","Real","LiteCoin","Euro",};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

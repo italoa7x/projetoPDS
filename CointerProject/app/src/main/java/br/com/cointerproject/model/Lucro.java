@@ -2,7 +2,7 @@ package br.com.cointerproject.model;
 
 import java.util.List;
 
-import br.com.cointerproject.dao.ILucroDao;
+import br.com.cointerproject.dao.Interfaces.ILucroDao;
 import br.com.cointerproject.dto.LucroDTO;
 
 public class Lucro {

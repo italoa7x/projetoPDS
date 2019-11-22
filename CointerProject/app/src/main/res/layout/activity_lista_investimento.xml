@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.ListaInvestimento">
+    tools:context=".ui.ListaInvestimento">
 
     <TextView
         android:id="@+id/textView2"
@@ -14,7 +14,7 @@
         android:layout_marginTop="68dp"
         android:layout_marginEnd="109dp"
         android:layout_marginBottom="16dp"
-        android:text="@string/valor_total_investido"
+        android:text="Valor total investido"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/textView3"
@@ -30,7 +30,7 @@
         android:layout_marginStart="28dp"
         android:layout_marginEnd="355dp"
         android:layout_marginBottom="2dp"
-        android:text="@string/r"
+        android:text="R$"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/listView"
         app:layout_constraintEnd_toEndOf="parent"
