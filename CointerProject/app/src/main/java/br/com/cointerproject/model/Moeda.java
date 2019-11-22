@@ -2,7 +2,7 @@ package br.com.cointerproject.model;
 
 import java.util.List;
 
-import br.com.cointerproject.dao.IMoedaDao;
+import br.com.cointerproject.dao.Interfaces.IMoedaDao;
 import br.com.cointerproject.dto.MoedaDTO;
 
 public class Moeda extends Fonte {

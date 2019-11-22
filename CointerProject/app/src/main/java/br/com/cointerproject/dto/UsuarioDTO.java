@@ -56,4 +56,8 @@ public class UsuarioDTO {
         this.id = id;
     }
 
+    @Override
+    public String toString(){
+        return  "Nome: " + this.getNome();
+    }
 }

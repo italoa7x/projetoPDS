@@ -20,7 +20,7 @@ public class ControllerUsuario {
     }
 
     // O método abaixo recebe um objeto DTO popular direto da view e manda para o model.
-    public UsuarioDTO salvar(UsuarioDTO user){
+    public boolean salvar(UsuarioDTO user){
         return usuario.salvar(user);
     }
 }

@@ -1,4 +1,4 @@
-package br.com.cointerproject.dao;
+package br.com.cointerproject.dao.Interfaces;
 
 import java.util.List;
 
