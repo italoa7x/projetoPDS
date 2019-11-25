@@ -22,6 +22,7 @@ public class UsuarioDAO implements ITUsuarioDAO{
 
     @Override
     public boolean salvar(UsuarioDTO u) {
+
         db = conexao.getWritableDatabase();
         ContentValues valores = new ContentValues();
         valores.put("nome", u.getNome());

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "24142080365",
+    "firebase_url": "https://cointer-c2799.firebaseio.com",
+    "project_id": "cointer-c2799",
+    "storage_bucket": "cointer-c2799.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:24142080365:android:d4d23df176b811510c1264",
+        "android_client_info": {
+          "package_name": "br.com.cointerproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "24142080365-cog01bdrh0nvvhp74ttnm0776v5omdme.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDBST7YXxBigBm8PZCZCY5qCTwo9-t3CQw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "24142080365-cog01bdrh0nvvhp74ttnm0776v5omdme.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
