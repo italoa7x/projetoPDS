@@ -1,4 +1,4 @@
-package br.com.cointerproject.view;
+package br.com.cointerproject.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -16,7 +16,7 @@ public class AcompanharInvestimento extends AppCompatActivity {
         setContentView(R.layout.activity_acompanhar_investimento);
         Intent it = getIntent();
         String parametro = (String) it.getSerializableExtra("nome");
-        TextView nome = (TextView) findViewById(R.id.textView);
+        TextView nome = (TextView) findViewById(R.id.txtView);
         nome.setText(parametro);
     }
 }
