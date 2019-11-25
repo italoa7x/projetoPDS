@@ -1,6 +1,8 @@
 package br.com.cointerproject.view;
 
 import androidx.appcompat.app.AppCompatActivity;
+import android.content.res.ColorStateList;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -25,7 +27,11 @@ public class CadastroActivity extends AppCompatActivity {
 
         boolean ok = true;
 
-        ok = Validacao.validarEmail(tiEmail.getText().toString());
+        if (!Validacao.validarEmail(tiEmail.getText().toString())) {
+            tiNome.getBackground().mutate().setColorFilter(getResources().getColor(R.color.colorAccent), PorterDuff.Mode.SRC_ATOP);
+            ok = false;
+        }
+
         ok = Validacao.validarSenha(tiSenha.getText().toString(), tiNome.getText().toString());
         if (tiSenha.getText().toString().equals(tiSenha2.getText().toString()) == false) ok = false;
 
