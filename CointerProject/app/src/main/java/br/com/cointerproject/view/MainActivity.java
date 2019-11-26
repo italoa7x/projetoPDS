@@ -1,34 +1,28 @@
-package br.com.cointerproject;
+package br.com.cointerproject.view;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-
 import android.view.View;
-
-import androidx.navigation.ui.AppBarConfiguration;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import br.com.cointerproject.R;
 import br.com.cointerproject.controller.ControllerUsuario;
 import br.com.cointerproject.dto.UsuarioDTO;
 import br.com.cointerproject.model.exceptions.ErroAoLogarException;
-import br.com.cointerproject.ui.utils.Validacao;
+import br.com.cointerproject.model.Validacao;
 
 public class MainActivity extends AppCompatActivity {
 
-    private AppBarConfiguration mAppBarConfiguration;
     private TextView txtCadastrar;
     private Button btAcessar;
     private EditText areaEmail;
     private EditText areaSenha;
 
-
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_login);
@@ -39,16 +33,14 @@ public class MainActivity extends AppCompatActivity {
 
         // O código abaixo chama a tela de cadastro.
         txtCadastrar.setOnClickListener(new View.OnClickListener() {
-            @Override
+
             public void onClick(View v) {
-                //setContentView(R.layout.activity_cadastro_usuario);
-                Intent t = new Intent(MainActivity.this, NovoUsuario.class);
-                startActivity(t);
+                irParaCadastro(v);
             }
         });
         // O código abaixo coleta os dados digitado pelo usuário e faz o login.
         btAcessar.setOnClickListener(new View.OnClickListener() {
-            @Override
+
             public void onClick(View v) {
                 String email = areaEmail.getText().toString();
                 String senha = areaSenha.getText().toString();
@@ -74,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
         // O método abaixo foi criado para verificar se o botão acessar foi clicado, se sim, é feito a lógica para validar os dados.
         btAcessar = findViewById(R.id.btAcessar);
         btAcessar.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("WrongConstant")
             @Override
             public void onClick(View v) {
                 String email = areaEmail.getText().toString();
