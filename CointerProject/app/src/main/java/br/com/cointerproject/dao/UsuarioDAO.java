@@ -4,7 +4,6 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-
 import br.com.cointerproject.dao.Interfaces.ITUsuarioDAO;
 import br.com.cointerproject.dto.UsuarioDTO;
 import br.com.cointerproject.model.exceptions.ErroAoLogarException;
