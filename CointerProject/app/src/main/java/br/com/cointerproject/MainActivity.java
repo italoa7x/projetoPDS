@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import android.view.View;
 
+import androidx.annotation.NonNull;
 import androidx.navigation.ui.AppBarConfiguration;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,9 +15,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import br.com.cointerproject.controller.ControllerUsuario;
-import br.com.cointerproject.dto.UsuarioDTO;
-import br.com.cointerproject.model.exceptions.ErroAoLogarException;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+
+import br.com.cointerproject.ui.Home;
 import br.com.cointerproject.ui.utils.Validacao;
 
 public class MainActivity extends AppCompatActivity {
@@ -26,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     private Button btAcessar;
     private EditText areaEmail;
     private EditText areaSenha;
+    private FirebaseAuth firebaseAuth;
 
 
     @Override
@@ -36,6 +41,8 @@ public class MainActivity extends AppCompatActivity {
         areaEmail = findViewById(R.id.campoEmail);
         areaSenha = findViewById(R.id.campoSenha);
         btAcessar = findViewById(R.id.btAcessar);
+        firebaseAuth = FirebaseAuth.getInstance();
+
 
         // O código abaixo chama a tela de cadastro.
         txtCadastrar.setOnClickListener(new View.OnClickListener() {
@@ -46,26 +53,14 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(t);
             }
         });
-        // O código abaixo coleta os dados digitado pelo usuário e faz o login.
-        btAcessar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String email = areaEmail.getText().toString();
-                String senha = areaSenha.getText().toString();
-                ControllerUsuario controllerUsuario = new ControllerUsuario(getApplicationContext());
-                UsuarioDTO user = new UsuarioDTO();
-                user.setEmail(email);
-                user.setSenha(senha);
-                try {
-                    user = controllerUsuario.logar(user);
-                    if(user != null){
-                        Toast.makeText(MainActivity.this, user.toString(), Toast.LENGTH_SHORT).show();
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
+        if(firebaseAuth.getCurrentUser()!=null){
+            Toast.makeText(getApplicationContext(), "Login efetuado com sucesso", Toast.LENGTH_SHORT);
+            Intent t = new Intent(MainActivity.this, Home.class);
+            startActivity(t);
+        }
+
+        logarNoSistema();
+
     }
 
     
@@ -80,35 +75,37 @@ public class MainActivity extends AppCompatActivity {
                 String senha = areaSenha.getText().toString();
 
                 Toast mensagem;
-                ControllerUsuario controllerUsuario = new ControllerUsuario(getApplicationContext());
 
                 if(email.length() > 0 && senha.length() > 0){
                     boolean validao = Validacao.validarEmail(email);
                     if(validao){
-                        try {
-                            UsuarioDTO user = new UsuarioDTO();
-                            user.setEmail(email);
-                            user.setSenha(senha);
-                            UsuarioDTO usuarioValidado = controllerUsuario.logar(user);
-                            if(usuarioValidado != null){
 
-                            }
-                        } catch (ErroAoLogarException e) {
-                            mensagem = Toast.makeText(getApplicationContext(), e.getMessage(), 2000);
-                            mensagem.show();
-                        }
+                            firebaseAuth.signInWithEmailAndPassword(email, senha)
+                                    .addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<AuthResult> task) {
+                                            if (task.isSuccessful()) {
+                                                Toast.makeText(getApplicationContext(), "Login efetuado com sucesso", Toast.LENGTH_SHORT);
+                                                Intent t = new Intent(MainActivity.this, Home.class);
+                                                startActivity(t);
+                                            } else {
+                                                Toast.makeText(getApplicationContext(), "E-mail ou senha inválido.", Toast.LENGTH_SHORT);
+                                            }
+                                        }
+                                    });
+
 
                     }
                 }
                 // Essa verificação foi feita para caso a entrada do campo e-mail for igual a 0, significa que o usuário não digitou nada. Então, ele recebe um aviso.
                 else if(email.length() == 0){
-                    mensagem =  Toast.makeText(getApplicationContext(), "Digite o e-mail.", 2000);
+                    mensagem =  Toast.makeText(getApplicationContext(), "Digite o e-mail.", Toast.LENGTH_SHORT);
                     mensagem.show();
                     areaEmail.requestFocus();
                 }
                 // Essa verificação foi feita para caso a entrada do campo senha for igual a 0, significa que o usuário não digitou nada. Então, ele recebe um aviso.
                 else if(senha.length() == 0){
-                    mensagem =  Toast.makeText(getApplicationContext(), "Digite a senha.", 2000);
+                    mensagem =  Toast.makeText(getApplicationContext(), "Digite a senha.", Toast.LENGTH_SHORT);
                     mensagem.show();
                     areaSenha.requestFocus();
                 }

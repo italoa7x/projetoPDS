@@ -8,9 +8,38 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:24142080365:android:d4d23df176b811510c1264",
+        "mobilesdk_app_id": "1:24142080365:android:c37c387ec7b675da0c1264",
         "android_client_info": {
           "package_name": "br.com.cointerproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "24142080365-cog01bdrh0nvvhp74ttnm0776v5omdme.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDBST7YXxBigBm8PZCZCY5qCTwo9-t3CQw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "24142080365-cog01bdrh0nvvhp74ttnm0776v5omdme.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:24142080365:android:6f1be4fc2e97639b0c1264",
+        "android_client_info": {
+          "package_name": "br.com.myapplication"
         }
       },
       "oauth_client": [
