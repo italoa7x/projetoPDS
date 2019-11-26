@@ -52,7 +52,7 @@ public class NovoUsuario extends AppCompatActivity {
 
             boolean result = controller.salvar(usuario);
             if(result) {
-                Toast.makeText(this, "Usuário salvo com sucesso!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Cadastro efetuado com sucesso!", Toast.LENGTH_SHORT).show();
             }else{
                 Toast.makeText(this, "Ocorreu um erro no cadastro.", Toast.LENGTH_SHORT).show();
             }
