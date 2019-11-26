@@ -1,30 +1,34 @@
 package br.com.cointerproject.view;
 
 import androidx.appcompat.app.AppCompatActivity;
-import android.content.res.ColorStateList;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+
 import br.com.cointerproject.R;
-import br.com.cointerproject.dao.UsuarioDAO;
-import br.com.cointerproject.model.Usuario;
+import br.com.cointerproject.controller.ControllerUsuario;
+import br.com.cointerproject.dto.UsuarioDTO;
 import br.com.cointerproject.model.Validacao;
 
 public class CadastroActivity extends AppCompatActivity {
 
-    @Override
+    private EditText tiNome;
+    private EditText tiEmail;
+    private EditText tiSenha;
+    private EditText tiSenha2;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro);
+
+        tiNome = findViewById(R.id.editTextNome);
+        tiEmail = findViewById(R.id.editTextEmail);
+        tiSenha = findViewById(R.id.editTextSenha);
+        tiSenha2 = findViewById(R.id.editTextSenha2);
     }
 
     public void cadastrar(View view) {
-        EditText tiNome = (EditText) (findViewById(R.id.editTextNome));
-        EditText tiEmail = (EditText) (findViewById(R.id.editTextEmail));
-        EditText tiSenha = (EditText) (findViewById(R.id.editTextSenha));
-        EditText tiSenha2 = (EditText) (findViewById(R.id.editTextSenha2));
-
         boolean ok = true;
 
         if (!Validacao.validarEmail(tiEmail.getText().toString())) {
@@ -32,17 +36,24 @@ public class CadastroActivity extends AppCompatActivity {
             ok = false;
         }
 
-        ok = Validacao.validarSenha(tiSenha.getText().toString(), tiNome.getText().toString());
-        if (tiSenha.getText().toString().equals(tiSenha2.getText().toString()) == false) ok = false;
+        if (!Validacao.validarSenha(tiSenha.getText().toString(), tiNome.getText().toString())) {
+            tiSenha.getBackground().mutate().setColorFilter(getResources().getColor(R.color.colorAccent), PorterDuff.Mode.SRC_ATOP);
+            ok = false;
+        }
+
+        if (!tiSenha.getText().toString().equals(tiSenha2.getText().toString()) == false) {
+            tiSenha2.getBackground().mutate().setColorFilter(getResources().getColor(R.color.colorAccent), PorterDuff.Mode.SRC_ATOP);
+            ok = false;
+        }
 
         if (ok == true) {
-            Usuario usuario = new Usuario();
-            usuario.setNome(tiNome.getText().toString());
-            usuario.setEmail(tiEmail.getText().toString());
-            usuario.setSenha(tiSenha.getText().toString());
+            UsuarioDTO dto = new UsuarioDTO();
+            dto.setNome(tiNome.getText().toString());
+            dto.setEmail(tiEmail.getText().toString());
+            dto.setSenha(tiSenha.getText().toString());
 
-            UsuarioDAO dao = new UsuarioDAO();
-            dao.salvar(usuario);
+            ControllerUsuario control = new ControllerUsuario(getApplicationContext());
+            control.salvar(dto);
         }
     }
 }
