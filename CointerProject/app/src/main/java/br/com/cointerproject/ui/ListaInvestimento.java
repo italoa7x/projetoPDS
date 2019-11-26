@@ -57,6 +57,6 @@ public class ListaInvestimento extends AppCompatActivity {
             imageView.setImageResource(images[position]);
             textView.setText(moedas[position]);
             return view;
-        }
+    }
     }
 }
