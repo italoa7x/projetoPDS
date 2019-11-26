@@ -81,21 +81,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/campoSenha" />
 
-    <Button
-        android:id="@+id/btAcessar2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/estilo_bt_redondo"
-        android:fontFamily="sans-serif-condensed-medium"
-        android:onClick="irParaCadastro"
-        android:text="Criar conta"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.897"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/campoSenha"
-        app:layout_constraintVertical_bias="0.291" />
-
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="123dp"
