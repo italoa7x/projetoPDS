@@ -43,7 +43,9 @@ public class cadastro_investimento extends AppCompatActivity {
         String campoValor = nome.getText().toString();
 
         if (campoNome.isEmpty() || campoValor.isEmpty()){
+
             return false;
+
         }
         return true;
     }

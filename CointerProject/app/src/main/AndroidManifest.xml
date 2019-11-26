@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".ui.Home"></activity>
         <activity
             android:name=".view.CadastroActivity"
             android:label="title_activity_cadastro"
@@ -22,7 +23,7 @@
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

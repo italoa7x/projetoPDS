@@ -4,6 +4,10 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 import br.com.cointerproject.dao.Interfaces.ITUsuarioDAO;
 import br.com.cointerproject.dto.UsuarioDTO;
 import br.com.cointerproject.model.exceptions.ErroAoLogarException;
@@ -11,9 +15,19 @@ import br.com.cointerproject.model.exceptions.UsuarioNaoEncontradoException;
 
 public class UsuarioDAO implements ITUsuarioDAO{
 
-    private SQLiteDatabase db;
-    private static final String TBL = "usuario";
     private Conexao conexao;
+    private FirebaseAuth auth;
+    private FirebaseAuth.AuthStateListener listener;
+
+    public UsuarioDAO (){
+        auth = FirebaseAuth.getInstance();
+        listener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+
+            }
+        };
+    }
 
     public UsuarioDAO(Context context){
         conexao = new Conexao(context);
@@ -21,18 +35,8 @@ public class UsuarioDAO implements ITUsuarioDAO{
 
     @Override
     public boolean salvar(UsuarioDTO u) {
-        db = conexao.getWritableDatabase();
-        ContentValues valores = new ContentValues();
-        valores.put("nome", u.getNome());
-        valores.put("email", u.getEmail());
-        valores.put("senha", u.getSenha());
+        return true;
 
-        Long retorno = db.insert(TBL, null, valores);
-        if(retorno == -1){
-            return false;
-        }else{
-            return true;
-        }
     }
 
     @Override
@@ -47,12 +51,10 @@ public class UsuarioDAO implements ITUsuarioDAO{
 
     @Override
     public UsuarioDTO logarNoSistema(UsuarioDTO usuario) throws ErroAoLogarException {
-        db = conexao.getWritableDatabase();
-        String sql = "SELECT *FROM "+TBL+ " WHERE email = ? AND senha = ?";
-        String[] args = new String[]{usuario.getEmail(), usuario.getSenha()};
-        Cursor cursor = db.rawQuery(sql, args);
-        cursor.moveToFirst();
-        return criarUsuario(cursor);
+        auth.signInWithEmailAndPassword(usuario.getEmail(),usuario.getSenha());
+
+        return null;
+
     }
 
     private UsuarioDTO criarUsuario(Cursor cursor){
