@@ -1,4 +1,4 @@
-package br.com.cointerproject.ui;
+package br.com.cointerproject.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -21,6 +21,6 @@ public class Home extends AppCompatActivity {
         textoHome = findViewById(R.id.textohome);
         FirebaseAuth f = FirebaseAuth.getInstance();
         FirebaseUser u = f.getCurrentUser();
-        textoHome.setText(u.getEmail());
+        textoHome.setText(u.getDisplayName());
     }
 }

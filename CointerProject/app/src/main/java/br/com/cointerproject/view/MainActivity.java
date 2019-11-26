@@ -4,15 +4,22 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+
 import br.com.cointerproject.R;
 import br.com.cointerproject.controller.ControllerUsuario;
 import br.com.cointerproject.dto.UsuarioDTO;
-import br.com.cointerproject.model.exceptions.ErroAoLogarException;
 import br.com.cointerproject.model.Validacao;
 
 public class MainActivity extends AppCompatActivity {
@@ -70,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    
+
     // Usei essa método para ser executado no momento em que a tela for construida.
     private void logarNoSistema() {
         // O método abaixo foi criado para verificar se o botão acessar foi clicado, se sim, é feito a lógica para validar os dados.
@@ -88,19 +95,19 @@ public class MainActivity extends AppCompatActivity {
                     boolean validao = Validacao.validarEmail(email);
                     if(validao){
 
-                            firebaseAuth.signInWithEmailAndPassword(email, senha)
-                                    .addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
-                                        @Override
-                                        public void onComplete(@NonNull Task<AuthResult> task) {
-                                            if (task.isSuccessful()) {
-                                                Toast.makeText(getApplicationContext(), "Login efetuado com sucesso", Toast.LENGTH_SHORT);
-                                                Intent t = new Intent(MainActivity.this, Home.class);
-                                                startActivity(t);
-                                            } else {
-                                                Toast.makeText(getApplicationContext(), "E-mail ou senha inválido.", Toast.LENGTH_SHORT);
-                                            }
+                        firebaseAuth.signInWithEmailAndPassword(email, senha)
+                                .addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<AuthResult> task) {
+                                        if (task.isSuccessful()) {
+                                            Toast.makeText(getApplicationContext(), "Login efetuado com sucesso", Toast.LENGTH_SHORT);
+                                            Intent t = new Intent(MainActivity.this, Home.class);
+                                            startActivity(t);
+                                        } else {
+                                            Toast.makeText(getApplicationContext(), "E-mail ou senha inválido.", Toast.LENGTH_SHORT);
                                         }
-                                    });
+                                    }
+                                });
 
 
                     }
@@ -129,3 +136,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
 }
+
+
+

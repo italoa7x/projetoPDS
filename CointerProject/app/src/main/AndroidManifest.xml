@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.Home"></activity>
+        <activity android:name=".view.Home"></activity>
         <activity
             android:name=".view.CadastroActivity"
             android:label="title_activity_cadastro"
@@ -29,7 +29,7 @@
         </activity>
         <activity android:name=".ui.ListaInvestimento" />
         <activity android:name=".ui.AcompanharInvestimento" />
-        <activity android:name=".ui.cadastroInvestimento.cadastro_investimento" />
+        <activity android:name=".view.cadastro_investimento" />
 
         <meta-data
             android:name="preloaded_fonts"

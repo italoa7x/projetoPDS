@@ -1,12 +1,9 @@
 package br.com.cointerproject.dao;
 
-import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 import br.com.cointerproject.dao.Interfaces.ITUsuarioDAO;
 import br.com.cointerproject.dto.UsuarioDTO;
@@ -19,15 +16,6 @@ public class UsuarioDAO implements ITUsuarioDAO{
     private FirebaseAuth auth;
     private FirebaseAuth.AuthStateListener listener;
 
-    public UsuarioDAO (){
-        auth = FirebaseAuth.getInstance();
-        listener = new FirebaseAuth.AuthStateListener() {
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-
-            }
-        };
-    }
 
     public UsuarioDAO(Context context){
         conexao = new Conexao(context);
