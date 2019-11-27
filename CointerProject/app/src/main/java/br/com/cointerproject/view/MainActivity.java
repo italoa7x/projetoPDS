@@ -18,10 +18,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 import br.com.cointerproject.R;
-import br.com.cointerproject.controller.ControllerUsuario;
-import br.com.cointerproject.dto.UsuarioDTO;
+
 import br.com.cointerproject.model.Validacao;
-import br.com.cointerproject.ui.Home;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -48,28 +46,9 @@ public class MainActivity extends AppCompatActivity {
                 irParaCadastro(v);
             }
         });
-        // O código abaixo coleta os dados digitado pelo usuário e faz o login.
-        btAcessar.setOnClickListener(new View.OnClickListener() {
 
-            public void onClick(View v) {
-                String email = areaEmail.getText().toString();
-                String senha = areaSenha.getText().toString();
-                ControllerUsuario controllerUsuario = new ControllerUsuario(getApplicationContext());
-                UsuarioDTO user = new UsuarioDTO();
-                user.setEmail(email);
-                user.setSenha(senha);
-                try {
-                    user = controllerUsuario.logar(user);
-                    if(user != null){
-                        Toast.makeText(MainActivity.this, user.toString(), Toast.LENGTH_SHORT).show();
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
         if(firebaseAuth.getCurrentUser()!=null){
-            Toast.makeText(getApplicationContext(), "Login efetuado com sucesso", Toast.LENGTH_SHORT);
+            Toast.makeText(getApplicationContext(), "Logado", Toast.LENGTH_SHORT);
             Intent t = new Intent(MainActivity.this, Home.class);
             startActivity(t);
         }

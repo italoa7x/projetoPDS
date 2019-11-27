@@ -18,8 +18,6 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
 
 import br.com.cointerproject.R;
-import br.com.cointerproject.controller.ControllerUsuario;
-import br.com.cointerproject.dto.UsuarioDTO;
 import br.com.cointerproject.model.Validacao;
 
 public class CadastroActivity extends AppCompatActivity {
