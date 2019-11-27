@@ -37,8 +37,6 @@ public class MainActivity extends AppCompatActivity {
         areaSenha = findViewById(R.id.campoSenha);
         btAcessar = findViewById(R.id.btAcessar);
         firebaseAuth = FirebaseAuth.getInstance();
-
-
         // O código abaixo chama a tela de cadastro.
         txtCadastrar.setOnClickListener(new View.OnClickListener() {
 
@@ -47,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        firebaseAuth = FirebaseAuth.getInstance();
         if(firebaseAuth.getCurrentUser()!=null){
             Toast.makeText(getApplicationContext(), "Logado", Toast.LENGTH_SHORT);
             Intent t = new Intent(MainActivity.this, Home.class);
@@ -59,8 +58,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     // Usei essa método para ser executado no momento em que a tela for construida.
+    // O método abaixo foi criado para verificar se o botão acessar foi clicado, se sim, é feito a lógica para validar os dados.
     private void logarNoSistema() {
-        // O método abaixo foi criado para verificar se o botão acessar foi clicado, se sim, é feito a lógica para validar os dados.
         btAcessar = findViewById(R.id.btAcessar);
         btAcessar.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("WrongConstant")

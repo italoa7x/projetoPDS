@@ -16,9 +16,10 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
-
-import br.com.cointerproject.R;
 import br.com.cointerproject.model.Validacao;
+import br.com.cointerproject.R;
+import br.com.cointerproject.ui.login.TelaLogin;
+
 
 public class CadastroActivity extends AppCompatActivity {
 
@@ -41,13 +42,13 @@ public class CadastroActivity extends AppCompatActivity {
 
     public void cadastrar(View view) {
         boolean ok = true;
-
-        if (!Validacao.validarEmail(tiEmail.getText().toString())) {
+        Validacao validadorDeDados = new Validacao();
+        if (!validadorDeDados.validarEmail(tiEmail.getText().toString())) {
             tiNome.getBackground().mutate().setColorFilter(getResources().getColor(R.color.colorAccent), PorterDuff.Mode.SRC_ATOP);
             ok = false;
         }
 
-        if (!Validacao.validarSenha(tiSenha.getText().toString(), tiNome.getText().toString())) {
+        if (!validadorDeDados.validarSenha(tiSenha.getText().toString(), tiNome.getText().toString())) {
             tiSenha.getBackground().mutate().setColorFilter(getResources().getColor(R.color.colorAccent), PorterDuff.Mode.SRC_ATOP);
             ok = false;
         }
@@ -70,7 +71,8 @@ public class CadastroActivity extends AppCompatActivity {
                                         .setDisplayName(tiNome.getText().toString())
                                         .build();
                                 user.updateProfile(profileUpdates);
-                                Intent t = new Intent(CadastroActivity.this, Home.class);
+
+                                Intent t = new Intent(CadastroActivity.this, TelaLogin.class);
                                 startActivity(t);
 
                             } else {

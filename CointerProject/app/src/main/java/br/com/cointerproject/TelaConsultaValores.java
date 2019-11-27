@@ -9,8 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import br.com.cointerproject.fachadaRequisicoes.FachadaRequisicoes;
+import br.com.cointerproject.fachadaRequisicoes.*;
 
 public class TelaConsultaValores extends AppCompatActivity {
     private TextView areaValorMoeda;

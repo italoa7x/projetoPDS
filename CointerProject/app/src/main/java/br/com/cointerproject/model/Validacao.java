@@ -3,7 +3,7 @@ package br.com.cointerproject.model;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public abstract class Validacao {
+public class Validacao {
 
     private static final String EMAIL_PATTERN =
             "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
