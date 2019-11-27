@@ -2,6 +2,8 @@ package br.com.cointerproject.view;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.view.View;
@@ -70,6 +72,8 @@ public class CadastroActivity extends AppCompatActivity {
                                         .setDisplayName(tiNome.getText().toString())
                                         .build();
                                 user.updateProfile(profileUpdates);
+                                Intent t = new Intent(CadastroActivity.this, Home.class);
+                                startActivity(t);
 
                             } else {
                                 Toast.makeText(CadastroActivity.this, "Falha no Cadastro",
