@@ -21,6 +21,7 @@ import br.com.cointerproject.R;
 import br.com.cointerproject.controller.ControllerUsuario;
 import br.com.cointerproject.dto.UsuarioDTO;
 import br.com.cointerproject.model.Validacao;
+import br.com.cointerproject.ui.Home;
 
 public class MainActivity extends AppCompatActivity {
 

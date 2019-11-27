@@ -10,10 +10,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".view.Home"></activity>
+        <activity android:name=".TelaConsultaValores"></activity>
         <activity
             android:name=".view.CadastroActivity"
             android:label="title_activity_cadastro"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ui.login.TelaLogin"
             android:label="@string/title_activity_tela_login" />
@@ -24,6 +25,7 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

@@ -3,6 +3,8 @@ package br.com.cointerproject.dao;
 import android.content.Context;
 import android.database.Cursor;
 
+import androidx.annotation.NonNull;
+
 import com.google.firebase.auth.FirebaseAuth;
 
 import br.com.cointerproject.dao.Interfaces.ITUsuarioDAO;
