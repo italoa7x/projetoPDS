@@ -9,28 +9,24 @@ import br.com.cointerproject.model.Status;
 public class InvestimentoDTO {
 
     private int id;
-
     private String nome;
     private double valor;
-
-
     private Status status;
-
     private Date inicio;
     private Date fim;
-
     private List lucro;
-
     private MoedaDTO fonte;
-
     private UsuarioDTO usuario;
-
     private List investimentos;
 
     public InvestimentoDTO(String nome, double valor, UsuarioDTO usuario) {
         this.nome = nome;
         this.valor = valor;
         this.usuario = usuario;
+    }
+
+    public InvestimentoDTO() {
+
     }
 
     public String getNome() {

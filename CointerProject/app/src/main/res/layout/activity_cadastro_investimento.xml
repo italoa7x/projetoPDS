@@ -7,7 +7,7 @@
     android:background="@color/cor_padrao_telas"
     android:backgroundTintMode="add"
     android:clickable="true"
-    tools:context=".ui.cadastroInvestimento.cadastro_investimento">
+    tools:context=".view.cadastro_investimento">
 
     <ImageView
         android:id="@+id/imageView2"

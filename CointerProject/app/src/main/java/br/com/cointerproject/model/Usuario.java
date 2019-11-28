@@ -84,7 +84,7 @@ public class Usuario {
     }
 
     // O método abaixo recebe uma instância de DTO populada e manda para a classe que acessa o banco.
-    public UsuarioDTO salvar(UsuarioDTO user){
+    public boolean salvar(UsuarioDTO user){
         return usuarioDAO.salvar(user);
     }
 
