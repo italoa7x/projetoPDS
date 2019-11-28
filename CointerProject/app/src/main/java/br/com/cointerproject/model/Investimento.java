@@ -3,47 +3,32 @@ package br.com.cointerproject.model;
 import java.util.Date;
 import java.util.List;
 
-import br.com.cointerproject.dao.Interfaces.IInvestimentoDao;
-import br.com.cointerproject.dto.InvestimentoDTO;
-
 public class Investimento {
+
+    private int id;
+
     private String nome;
     private double valor;
+
+
     private Status status;
+
     private Date inicio;
     private Date fim;
+
     private List lucro;
-    private Fonte fonte;
+
+    private Moeda fonte;
+
     private Usuario usuario;
-    private IInvestimentoDao investimentoDao;
+
+    private List investimentos;
+
     public Investimento(String nome, double valor, Usuario usuario) {
         this.nome = nome;
         this.valor = valor;
         this.usuario = usuario;
     }
-
-
-
-    public void atualizar(InvestimentoDTO investimento){
-        investimentoDao.atualizar(investimento);
-    }
-
-    public void salvar(InvestimentoDTO investimento){
-        investimentoDao.salvar(investimento);
-    }
-
-    public void excluir(InvestimentoDTO investimento){
-        investimentoDao.excluir(investimento);
-    }
-
-    public List buscarPorId(InvestimentoDTO investimento){
-        return investimentoDao.buscarPorId(investimento);
-    }
-
-    public List listar(){
-        return investimentoDao.listar();
-    }
-
 
     public String getNome() {
         return nome;
@@ -89,8 +74,16 @@ public class Investimento {
         return lucro;
     }
 
-    public void setLucro(List lucro) {
-        this.lucro = lucro;
+    public void setLucro(List lucroDTO) {
+        this.lucro = lucroDTO;
+    }
+
+    public Moeda getFonte() {
+        return fonte;
+    }
+
+    public void setFonte(Moeda fonte) {
+        this.fonte = fonte;
     }
 
     public Usuario getUsuario() {
@@ -101,11 +94,19 @@ public class Investimento {
         this.usuario = usuario;
     }
 
-    public Fonte getFonte() {
-        return fonte;
+    public List getInvestimentos() {
+        return investimentos;
     }
 
-    public void setFonte(Fonte fonte) {
-        this.fonte = fonte;
+    public void setInvestimentos(List investimentos) {
+        this.investimentos = investimentos;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

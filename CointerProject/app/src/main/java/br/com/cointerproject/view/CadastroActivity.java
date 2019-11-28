@@ -38,47 +38,48 @@ public class CadastroActivity extends AppCompatActivity {
         tiSenha2 = findViewById(R.id.editTextSenha2);
         firebaseAuth = FirebaseAuth.getInstance();
     }
-
+    //metodo que cadastrar um usuário no database
     public void cadastrar(View view) {
-        boolean ok = true;
+            boolean ok = true;
+            //verificações de validação, ex: se o email é valido, senha com pelo menos 8 caracteres e algumas outras coisas
+            if (!Validacao.validarEmail(tiEmail.getText().toString())) {
+                tiNome.getBackground().mutate().setColorFilter(getResources().getColor(R.color.colorAccent), PorterDuff.Mode.SRC_ATOP);
+                ok = false;
+            }
 
-        if (!Validacao.validarEmail(tiEmail.getText().toString())) {
-            tiNome.getBackground().mutate().setColorFilter(getResources().getColor(R.color.colorAccent), PorterDuff.Mode.SRC_ATOP);
-            ok = false;
-        }
+            if (!Validacao.validarSenha(tiSenha.getText().toString(), tiNome.getText().toString())) {
+                tiSenha.getBackground().mutate().setColorFilter(getResources().getColor(R.color.colorAccent), PorterDuff.Mode.SRC_ATOP);
+                ok = false;
+            }
 
-        if (!Validacao.validarSenha(tiSenha.getText().toString(), tiNome.getText().toString())) {
-            tiSenha.getBackground().mutate().setColorFilter(getResources().getColor(R.color.colorAccent), PorterDuff.Mode.SRC_ATOP);
-            ok = false;
-        }
+            if (!tiSenha.getText().toString().equals(tiSenha2.getText().toString())) {
+                tiSenha2.getBackground().mutate().setColorFilter(getResources().getColor(R.color.colorAccent), PorterDuff.Mode.SRC_ATOP);
+                ok = false;
+            }
+            //se a validação for feita corretamente é feito o cadastro no firebase
 
-        if (!tiSenha.getText().toString().equals(tiSenha2.getText().toString())) {
-            tiSenha2.getBackground().mutate().setColorFilter(getResources().getColor(R.color.colorAccent), PorterDuff.Mode.SRC_ATOP);
-            ok = false;
-        }
+            if (ok == true) {
+                String email = tiEmail.getText().toString();
+                String senha = tiSenha.getText().toString();
+                firebaseAuth.createUserWithEmailAndPassword(email, senha)
+                        .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if (task.isSuccessful()) {
+                                    FirebaseUser user = firebaseAuth.getCurrentUser();
+                                    UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                                            .setDisplayName(tiNome.getText().toString())
+                                            .build();
+                                    user.updateProfile(profileUpdates);
+                                    Intent t = new Intent(CadastroActivity.this, Home.class);
+                                    startActivity(t);
 
-        if (ok == true) {
-            String email = tiEmail.getText().toString();
-            String senha = tiSenha.getText().toString();
-            firebaseAuth.createUserWithEmailAndPassword(email, senha)
-                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if (task.isSuccessful()) {
-                                FirebaseUser user = firebaseAuth.getCurrentUser();
-                                UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
-                                        .setDisplayName(tiNome.getText().toString())
-                                        .build();
-                                user.updateProfile(profileUpdates);
-                                Intent t = new Intent(CadastroActivity.this, Home.class);
-                                startActivity(t);
-
-                            } else {
-                                Toast.makeText(CadastroActivity.this, "Falha no Cadastro",
-                                        Toast.LENGTH_SHORT).show();
+                                } else {
+                                    Toast.makeText(CadastroActivity.this, "Falha no Cadastro",
+                                            Toast.LENGTH_SHORT).show();
+                                }
                             }
-                        }
-                    });}
+                        });}
     }
 }
 
