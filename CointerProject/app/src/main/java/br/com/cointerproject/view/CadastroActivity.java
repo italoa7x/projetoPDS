@@ -16,10 +16,9 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
-import br.com.cointerproject.model.Validacao;
-import br.com.cointerproject.R;
-import br.com.cointerproject.ui.login.TelaLogin;
 
+import br.com.cointerproject.R;
+import br.com.cointerproject.model.Validacao;
 
 public class CadastroActivity extends AppCompatActivity {
 
@@ -39,16 +38,16 @@ public class CadastroActivity extends AppCompatActivity {
         tiSenha2 = findViewById(R.id.editTextSenha2);
         firebaseAuth = FirebaseAuth.getInstance();
     }
-
+    //metodo que cadastrar um usuário no database
     public void cadastrar(View view) {
         boolean ok = true;
-        Validacao validadorDeDados = new Validacao();
-        if (!validadorDeDados.validarEmail(tiEmail.getText().toString())) {
+        //verificações de validação, ex: se o email é valido, senha com pelo menos 8 caracteres e algumas outras coisas
+        if (!Validacao.validarEmail(tiEmail.getText().toString())) {
             tiNome.getBackground().mutate().setColorFilter(getResources().getColor(R.color.colorAccent), PorterDuff.Mode.SRC_ATOP);
             ok = false;
         }
 
-        if (!validadorDeDados.validarSenha(tiSenha.getText().toString(), tiNome.getText().toString())) {
+        if (!Validacao.validarSenha(tiSenha.getText().toString(), tiNome.getText().toString())) {
             tiSenha.getBackground().mutate().setColorFilter(getResources().getColor(R.color.colorAccent), PorterDuff.Mode.SRC_ATOP);
             ok = false;
         }
@@ -57,6 +56,7 @@ public class CadastroActivity extends AppCompatActivity {
             tiSenha2.getBackground().mutate().setColorFilter(getResources().getColor(R.color.colorAccent), PorterDuff.Mode.SRC_ATOP);
             ok = false;
         }
+        //se a validação for feita corretamente é feito o cadastro no firebase
 
         if (ok == true) {
             String email = tiEmail.getText().toString();
@@ -71,8 +71,7 @@ public class CadastroActivity extends AppCompatActivity {
                                         .setDisplayName(tiNome.getText().toString())
                                         .build();
                                 user.updateProfile(profileUpdates);
-
-                                Intent t = new Intent(CadastroActivity.this, TelaLogin.class);
+                                Intent t = new Intent(CadastroActivity.this, Home.class);
                                 startActivity(t);
 
                             } else {
@@ -83,5 +82,3 @@ public class CadastroActivity extends AppCompatActivity {
                     });}
     }
 }
-
-
