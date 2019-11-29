@@ -17,26 +17,7 @@ public class Validacao {
     }
 
     public static boolean validarSenha(String senha, String nome) {
-        int numeros = 0;
-        int letras = 0;
-
-        char[] caracteres = senha.toCharArray();
-
-        for(char c : caracteres) {
-            if (Character.isLetter(c)) {
-                letras++;
-            } else if (Character.isDigit(c)) {
-                numeros++;
-            }
-        }
-
-        if (numeros >= 3 && letras >= 3) {
-            if (!senha.contains(nome))
-                return true;
-            else
-                return false;
-        }
-
-        return false;
+        return (senha.length() >= 8 && nome.length() > 8 ? true : false);
     }
+
 }

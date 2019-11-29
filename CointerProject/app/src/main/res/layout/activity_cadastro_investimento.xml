@@ -7,7 +7,7 @@
     android:background="@color/cor_padrao_telas"
     android:backgroundTintMode="add"
     android:clickable="true"
-    tools:context=".view.cadastro_investimento">
+    tools:context=".view.CadastroInvActivity">
 
     <ImageView
         android:id="@+id/imageView2"
@@ -27,6 +27,7 @@
         android:layout_marginTop="232dp"
         android:layout_marginEnd="24dp"
 
+        android:layout_marginBottom="20dp"
         android:hint="Nome"
         android:inputType="textEmailAddress"
         android:selectAllOnFocus="true"
@@ -35,6 +36,7 @@
         android:textColorHint="#FFFF"
         android:textColorLink="#00000000"
         android:textCursorDrawable="@color/colorWhite"
+        app:layout_constraintBottom_toTopOf="@+id/txvalor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -47,14 +49,16 @@
         android:layout_marginTop="40dp"
 
         android:layout_marginEnd="24dp"
+        android:layout_marginBottom="20dp"
         android:hint="Valor R$"
-        android:inputType="textEmailAddress"
+        android:inputType="number"
         android:selectAllOnFocus="true"
         android:textColor="#FFFFFF"
         android:textColorHighlight="#00030303"
         android:textColorHint="#FFFF"
         android:textColorLink="#00000000"
         android:textCursorDrawable="@color/colorWhite"
+        app:layout_constraintBottom_toTopOf="@+id/spinermercado"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -67,8 +71,10 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="40dp"
         android:layout_marginEnd="24dp"
+        android:layout_marginBottom="20dp"
         android:backgroundTint="#FFFFFF"
         android:spinnerMode="dropdown"
+        app:layout_constraintBottom_toTopOf="@+id/spinerfonte"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -81,7 +87,9 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="40dp"
         android:layout_marginEnd="24dp"
+        android:layout_marginBottom="40dp"
         android:backgroundTint="#FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/btAcessar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -91,7 +99,7 @@
         android:id="@+id/btAcessar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="30dp"
         android:layout_marginBottom="100dp"
         android:background="@drawable/estilo_bt_redondo"
         android:fontFamily="sans-serif-condensed-medium"

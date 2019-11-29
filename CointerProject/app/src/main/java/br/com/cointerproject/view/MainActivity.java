@@ -69,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
                 String senha = areaSenha.getText().toString();
 
                 Toast mensagem;
+                firebaseAuth = FirebaseAuth.getInstance();
 
                 if(email.length() > 0 && senha.length() > 0){
                     boolean validao = Validacao.validarEmail(email);

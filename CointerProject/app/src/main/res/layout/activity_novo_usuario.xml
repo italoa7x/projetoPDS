@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/cor_padrao_telas"
-    tools:context=".NovoUsuario" >
+    tools:context=".view.CadastroActivity" >
 
 
     <ImageView
@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="20dp"
-        android:fontFamily="@font/archivo_black"
+        android:fontFamily="sans-serif-black"
         android:text="Nome"
         android:textColor="#FFFF"
         android:textSize="15dp"
@@ -43,7 +43,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="196dp"
-        android:fontFamily="@font/archivo_black"
+        android:fontFamily="sans-serif-black"
         android:text="Senha"
         android:textColor="#FFFF"
         android:textSize="15dp"
@@ -86,7 +86,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="112dp"
-        android:fontFamily="@font/archivo_black"
+        android:fontFamily="sans-serif-black"
         android:text="E-mail"
         android:textColor="#FFFF"
         android:textSize="15dp"
@@ -115,7 +115,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:background="@drawable/estilo_bt_redondo"
-        android:onClick="finalizarCadastro"
         android:text="Finalizar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
