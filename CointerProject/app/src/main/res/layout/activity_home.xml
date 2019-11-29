@@ -44,6 +44,20 @@
         app:layout_constraintHorizontal_bias="0.647"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <Button
+        android:id="@+id/cadastroI"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="162dp"
+        android:layout_marginEnd="162dp"
+        android:layout_marginBottom="20dp"
+        android:onClick="telaCadastroI"
+        android:text="Cadastro Investimento"
+        app:layout_constraintBottom_toTopOf="@+id/deslogar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent" />
+
 
     android:id="@+id/deslogar"
         android:layout_width="wrap_content"

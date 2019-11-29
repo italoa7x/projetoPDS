@@ -48,4 +48,9 @@ public class Home extends AppCompatActivity {
         Intent it = new Intent(Home.this, TelaConsultaValores.class);
         startActivity(it);
     }
+
+    public void telaCadastroI(View view){
+        Intent it = new Intent(Home.this, CadastroInvActivity.class);
+        startActivity(it);
+    }
 }
