@@ -11,11 +11,4 @@
     <string name="invalid_password">invalid_password</string>
     <string name="title_activity_cadastro_usuario">TesteCadastro</string>
     <string name="title_activity_novo_usuario">NovoUsuario</string>
-    <string name="txtview">txtview</string>
-    <string name="logo">logo</string>
-    <string name="valor_total_investido">Valor total investido</string>
-    <string name="r">R$</string>
-    <string name="_100_00">100,00</string>
-    <string name="vale_r">Vale R$</string>
-    <string name="textview4">textView4</string>
 </resources>

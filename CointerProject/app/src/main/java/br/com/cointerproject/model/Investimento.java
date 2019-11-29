@@ -1,111 +1,178 @@
 package br.com.cointerproject.model;
 
-import java.util.Date;
-import java.util.List;
 
-import br.com.cointerproject.dao.Interfaces.IInvestimentoDao;
-import br.com.cointerproject.dto.InvestimentoDTO;
+
+
+
+import com.google.firebase.database.IgnoreExtraProperties;
+
+
+import java.text.SimpleDateFormat;
+
+import java.util.Date;
+
+
+
+@IgnoreExtraProperties
 
 public class Investimento {
+
+
+
+    private String id;
+
     private String nome;
+
     private double valor;
-    private Status status;
-    private Date inicio;
-    private Date fim;
-    private List lucro;
-    private Fonte fonte;
-    private Usuario usuario;
-    private IInvestimentoDao investimentoDao;
-    public Investimento(String nome, double valor, Usuario usuario) {
+
+    private String status;
+
+    private String inicio;
+
+    private String fim;
+
+    private String moeda;
+
+
+
+
+
+    public Investimento(){ }
+
+
+
+    public Investimento(String nome, double valor, String moeda) {
+
         this.nome = nome;
+
         this.valor = valor;
-        this.usuario = usuario;
+
+        SimpleDateFormat form = new SimpleDateFormat("dd/MM/yyyy");
+
+        Date data = new Date();
+
+        inicio = form.format(data);
+
+        this.status =
+
+        this.moeda = moeda;
+
+
+
+
+
     }
 
-
-
-    public void atualizar(InvestimentoDTO investimento){
-        investimentoDao.atualizar(investimento);
-    }
-
-    public void salvar(InvestimentoDTO investimento){
-        investimentoDao.salvar(investimento);
-    }
-
-    public void excluir(InvestimentoDTO investimento){
-        investimentoDao.excluir(investimento);
-    }
-
-    public List buscarPorId(InvestimentoDTO investimento){
-        return investimentoDao.buscarPorId(investimento);
-    }
-
-    public List listar(){
-        return investimentoDao.listar();
-    }
 
 
     public String getNome() {
+
         return nome;
+
     }
+
+
 
     public void setNome(String nome) {
+
         this.nome = nome;
+
     }
+
+
 
     public double getValor() {
+
         return valor;
+
     }
+
+
 
     public void setValor(double valor) {
+
         this.valor = valor;
+
     }
 
-    public Status getStatus() {
+
+
+    public String getStatus() {
+
         return status;
+
     }
 
-    public void setStatus(Status status) {
+
+
+    public void setStatus(String status) {
+
         this.status = status;
+
     }
 
-    public Date getInicio() {
+
+
+    public String getInicio() {
+
         return inicio;
+
     }
 
-    public void setInicio(Date inicio) {
+
+
+    public void setInicio(String inicio) {
+
         this.inicio = inicio;
+
     }
 
-    public Date getFim() {
+
+
+    public String getFim() {
+
         return fim;
+
     }
 
-    public void setFim(Date fim) {
+
+
+    public void setFim(String fim) {
+
         this.fim = fim;
+
     }
 
-    public List getLucro() {
-        return lucro;
+
+
+    public String getId() {
+
+        return id;
+
     }
 
-    public void setLucro(List lucro) {
-        this.lucro = lucro;
+
+
+    public void setId(String id) {
+
+        this.id = id;
+
     }
 
-    public Usuario getUsuario() {
-        return usuario;
+
+
+    public String getMoeda() {
+
+        return moeda;
+
     }
 
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
+
+
+    public void setMoeda(String moeda) {
+
+        this.moeda = moeda;
+
     }
 
-    public Fonte getFonte() {
-        return fonte;
-    }
-
-    public void setFonte(Fonte fonte) {
-        this.fonte = fonte;
-    }
 }
