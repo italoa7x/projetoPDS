@@ -4,6 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#2E5266"
+    android:backgroundTintMode="multiply"
+
     tools:context=".ui.ListaInvestimento">
 
     <TextView
@@ -16,7 +19,9 @@
         android:layout_marginBottom="16dp"
         android:text="Valor total investido"
         android:textSize="30sp"
-        android:textStyle="bold"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFF"
+        android:textCursorDrawable="@color/colorWhite"
         app:layout_constraintBottom_toTopOf="@+id/textView3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -30,7 +35,10 @@
         android:layout_marginStart="28dp"
         android:layout_marginEnd="355dp"
         android:layout_marginBottom="2dp"
+
+        android:textColor="#FFFFFF"
         android:text="R$"
+
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/listView"
         app:layout_constraintEnd_toEndOf="parent"
@@ -48,6 +56,27 @@
         android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="236dp"
+        android:layout_marginBottom="6dp"
+        android:text="@string/textview4"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFF"
+        android:textCursorDrawable="@color/colorWhite"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/listView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/textView3"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:layout_constraintVertical_bias="0.461" />
 </androidx.constraintlayout.widget.ConstraintLayout>

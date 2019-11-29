@@ -34,7 +34,7 @@ public class ListaInvestimento extends AppCompatActivity {
     public void preencherArray(){
         images = new int[moedas.length];
         for(int i = 0; i<moedas.length;i++){
-            images[i] = R.drawable.icone_investimento_24dp;
+            images[i] = R.drawable.cifrao;
         }
     }
     class CustomAdaptor extends BaseAdapter{
