@@ -31,7 +31,7 @@
         </activity>
         <activity android:name=".ui.ListaInvestimento" />
         <activity android:name=".ui.AcompanharInvestimento" />
-        <activity android:name=".view.cadastro_investimento" />
+        <activity android:name=".view.CadastroInvActivity" />
 
         <meta-data
             android:name="preloaded_fonts"

@@ -1,33 +1,35 @@
 package br.com.cointerproject.model;
 
+
+import com.google.firebase.database.IgnoreExtraProperties;
+
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-
+@IgnoreExtraProperties
 public class Investimento {
 
-    private int id;
-
+    private String id;
     private String nome;
     private double valor;
+    private String status;
+    private String inicio;
+    private String fim;
+    private String moeda;
 
 
-    private Status status;
+    public Investimento(){ }
 
-    private Date inicio;
-    private Date fim;
-
-    private List lucro;
-
-    private Moeda fonte;
-
-    private Usuario usuario;
-
-    private List investimentos;
-
-    public Investimento(String nome, double valor, Usuario usuario) {
+    public Investimento(String nome, double valor, String moeda) {
         this.nome = nome;
         this.valor = valor;
-        this.usuario = usuario;
+        SimpleDateFormat form = new SimpleDateFormat("dd/MM/yyyy");
+        Date data = new Date();
+        inicio = form.format(data);
+        this.status = Status.ATIVO.name();
+        this.moeda = moeda;
+
+
     }
 
     public String getNome() {
@@ -46,67 +48,43 @@ public class Investimento {
         this.valor = valor;
     }
 
-    public Status getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(Status status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 
-    public Date getInicio() {
+    public String getInicio() {
         return inicio;
     }
 
-    public void setInicio(Date inicio) {
+    public void setInicio(String inicio) {
         this.inicio = inicio;
     }
 
-    public Date getFim() {
+    public String getFim() {
         return fim;
     }
 
-    public void setFim(Date fim) {
+    public void setFim(String fim) {
         this.fim = fim;
     }
 
-    public List getLucro() {
-        return lucro;
-    }
-
-    public void setLucro(List lucroDTO) {
-        this.lucro = lucroDTO;
-    }
-
-    public Moeda getFonte() {
-        return fonte;
-    }
-
-    public void setFonte(Moeda fonte) {
-        this.fonte = fonte;
-    }
-
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
-    }
-
-    public List getInvestimentos() {
-        return investimentos;
-    }
-
-    public void setInvestimentos(List investimentos) {
-        this.investimentos = investimentos;
-    }
-
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
+    }
+
+    public String getMoeda() {
+        return moeda;
+    }
+
+    public void setMoeda(String moeda) {
+        this.moeda = moeda;
     }
 }
