@@ -5,9 +5,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.graphics.PorterDuff;
+import android.graphics.drawable.Icon;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -26,17 +30,27 @@ public class CadastroActivity extends AppCompatActivity {
     private EditText tiEmail;
     private EditText tiSenha;
     private EditText tiSenha2;
+    private Button btCadastrar;
     private FirebaseAuth firebaseAuth;
+
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cadastro);
+        setContentView(R.layout.activity_novo_usuario);
+        tiNome = findViewById(R.id.campoNome);
+        tiEmail = findViewById(R.id.campoEmail);
+        tiSenha = findViewById(R.id.campoSenha);
+        btCadastrar = findViewById(R.id.btFinalizarCadastro);
 
-        tiNome = findViewById(R.id.editTextNome);
-        tiEmail = findViewById(R.id.editTextEmail);
-        tiSenha = findViewById(R.id.editTextSenha);
-        tiSenha2 = findViewById(R.id.editTextSenha2);
         firebaseAuth = FirebaseAuth.getInstance();
+
+        btCadastrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                cadastrar(v);
+            }
+        });
+
     }
     //metodo que cadastrar um usuário no database
     public void cadastrar(View view) {
@@ -45,19 +59,16 @@ public class CadastroActivity extends AppCompatActivity {
         if (!Validacao.validarEmail(tiEmail.getText().toString())) {
             tiNome.getBackground().mutate().setColorFilter(getResources().getColor(R.color.colorAccent), PorterDuff.Mode.SRC_ATOP);
             ok = false;
+            Toast.makeText(this, "E-mail inválido!", Toast.LENGTH_SHORT).show();
         }
 
         if (!Validacao.validarSenha(tiSenha.getText().toString(), tiNome.getText().toString())) {
             tiSenha.getBackground().mutate().setColorFilter(getResources().getColor(R.color.colorAccent), PorterDuff.Mode.SRC_ATOP);
             ok = false;
+            Toast.makeText(this, "Digite uma senha válida.", Toast.LENGTH_SHORT).show();
         }
 
-        if (!tiSenha.getText().toString().equals(tiSenha2.getText().toString())) {
-            tiSenha2.getBackground().mutate().setColorFilter(getResources().getColor(R.color.colorAccent), PorterDuff.Mode.SRC_ATOP);
-            ok = false;
-        }
         //se a validação for feita corretamente é feito o cadastro no firebase
-
         if (ok == true) {
             String email = tiEmail.getText().toString();
             String senha = tiSenha.getText().toString();

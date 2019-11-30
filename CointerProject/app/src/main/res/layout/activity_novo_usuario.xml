@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/cor_padrao_telas"
-    tools:context=".NovoUsuario" >
+    tools:context=".view.CadastroActivity" >
 
 
     <ImageView
@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="20dp"
-        android:fontFamily="@font/archivo_black"
+        android:fontFamily="sans-serif-black"
         android:text="Nome"
         android:textColor="#FFFF"
         android:textSize="15dp"
@@ -43,7 +43,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="196dp"
-        android:fontFamily="@font/archivo_black"
+        android:fontFamily="sans-serif-black"
         android:text="Senha"
         android:textColor="#FFFF"
         android:textSize="15dp"
@@ -61,6 +61,9 @@
         android:layout_marginEnd="16dp"
         android:ems="10"
         android:inputType="textPassword"
+        android:textColor="#FFFF"
+        android:textColorHint="#FFFF"
+        android:textColorLink="#FFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -75,6 +78,9 @@
         android:layout_marginEnd="16dp"
         android:ems="10"
         android:inputType="textPersonName"
+        android:textColor="#FFFF"
+        android:textColorHint="#FFFF"
+        android:textColorLink="#FFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -86,7 +92,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="112dp"
-        android:fontFamily="@font/archivo_black"
+        android:fontFamily="sans-serif-black"
         android:text="E-mail"
         android:textColor="#FFFF"
         android:textSize="15dp"
@@ -104,25 +110,26 @@
         android:layout_marginEnd="16dp"
         android:ems="10"
         android:inputType="textPersonName"
+        android:textColor="#FFFF"
+        android:textColorHint="#FFFF"
+        android:textColorLink="#FFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
     <Button
-        android:id="@+id/btFinalizar"
+        android:id="@+id/btFinalizarCadastro"
         android:layout_width="88dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="52dp"
         android:background="@drawable/estilo_bt_redondo"
-        android:onClick="finalizarCadastro"
         android:text="Finalizar"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/campoSenha" />
-
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
