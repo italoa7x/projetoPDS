@@ -18,7 +18,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.Locale;
 
 import br.com.cointerproject.R;
-import br.com.cointerproject.TelaConsultaValores;
 import br.com.cointerproject.model.Investimento;
 import br.com.cointerproject.model.Mercado;
 import br.com.cointerproject.ui.ListaInvestimento;
