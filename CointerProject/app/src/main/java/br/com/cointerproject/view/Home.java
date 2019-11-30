@@ -53,4 +53,9 @@ public class Home extends AppCompatActivity {
         Intent it = new Intent(Home.this, CadastroInvActivity.class);
         startActivity(it);
     }
+
+    public void listaInvestimentos(View view){
+        Intent it = new Intent(Home.this, ListaInvestimentos.class);
+        startActivity(it);
+    }
 }

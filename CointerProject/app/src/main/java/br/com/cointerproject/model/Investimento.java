@@ -16,6 +16,7 @@ public class Investimento {
     private String inicio;
     private String fim;
     private String moeda;
+    private double lucro;
 
 
     public Investimento(){ }
@@ -86,5 +87,13 @@ public class Investimento {
 
     public void setMoeda(String moeda) {
         this.moeda = moeda;
+    }
+
+    public double getLucro() {
+        return lucro;
+    }
+
+    public void setLucro(double lucro) {
+        this.lucro = lucro;
     }
 }

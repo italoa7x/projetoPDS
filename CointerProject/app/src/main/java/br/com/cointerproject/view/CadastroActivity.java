@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Icon;
 import android.os.Bundle;
@@ -29,18 +30,16 @@ public class CadastroActivity extends AppCompatActivity {
     private EditText tiNome;
     private EditText tiEmail;
     private EditText tiSenha;
-    private EditText tiSenha2;
-    private Button btCadastrar;
     private FirebaseAuth firebaseAuth;
 
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_novo_usuario);
+
         tiNome = findViewById(R.id.campoNome);
         tiEmail = findViewById(R.id.campoEmail);
         tiSenha = findViewById(R.id.campoSenha);
-        btCadastrar = findViewById(R.id.btFinalizarCadastro);
 
         firebaseAuth = FirebaseAuth.getInstance();
 
@@ -52,24 +51,26 @@ public class CadastroActivity extends AppCompatActivity {
         });
 
     }
+
     //metodo que cadastrar um usuário no database
     public void cadastrar(View view) {
         boolean ok = true;
         //verificações de validação, ex: se o email é valido, senha com pelo menos 8 caracteres e algumas outras coisas
         if (!Validacao.validarEmail(tiEmail.getText().toString())) {
-            tiNome.getBackground().mutate().setColorFilter(getResources().getColor(R.color.colorAccent), PorterDuff.Mode.SRC_ATOP);
+            tiNome.requestFocus();
+            tiNome.getBackground().mutate().setColorFilter(getResources().getColor(R.color.vermelho_fireBrick), PorterDuff.Mode.SRC_ATOP);
+            Toast.makeText(this, "Verifique o tamanho do e-mail!", Toast.LENGTH_SHORT).show();
             ok = false;
-            Toast.makeText(this, "E-mail inválido!", Toast.LENGTH_SHORT).show();
         }
 
         if (!Validacao.validarSenha(tiSenha.getText().toString(), tiNome.getText().toString())) {
-            tiSenha.getBackground().mutate().setColorFilter(getResources().getColor(R.color.colorAccent), PorterDuff.Mode.SRC_ATOP);
+            tiSenha.requestFocus();
+            tiSenha.getBackground().mutate().setColorFilter(getResources().getColor(R.color.vermelho_fireBrick), PorterDuff.Mode.SRC_ATOP);
+            Toast.makeText(this, "Verifique sua senha/nome.", Toast.LENGTH_SHORT).show();
             ok = false;
-            Toast.makeText(this, "Digite uma senha válida.", Toast.LENGTH_SHORT).show();
         }
 
-        //se a validação for feita corretamente é feito o cadastro no firebase
-        if (ok == true) {
+        if (ok) {
             String email = tiEmail.getText().toString();
             String senha = tiSenha.getText().toString();
             firebaseAuth.createUserWithEmailAndPassword(email, senha)
@@ -90,6 +91,7 @@ public class CadastroActivity extends AppCompatActivity {
                                         Toast.LENGTH_SHORT).show();
                             }
                         }
-                    });}
+                    });
+        }
     }
 }

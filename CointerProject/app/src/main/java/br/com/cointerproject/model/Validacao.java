@@ -18,5 +18,7 @@ public class Validacao {
 
     public static boolean validarSenha(String senha, String nome) {
         return (senha.length() >= 8 && nome.length() >=8 ? true : false);
+
     }
+
 }
