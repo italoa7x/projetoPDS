@@ -43,12 +43,6 @@ public class CadastroActivity extends AppCompatActivity {
 
         firebaseAuth = FirebaseAuth.getInstance();
 
-        btCadastrar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                cadastrar(v);
-            }
-        });
 
     }
 
