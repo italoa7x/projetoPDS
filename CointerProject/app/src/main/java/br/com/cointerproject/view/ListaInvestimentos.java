@@ -1,6 +1,7 @@
 package br.com.cointerproject.view;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
@@ -20,6 +21,7 @@ public class ListaInvestimentos extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_investimentos);
         recycler = findViewById(R.id.recycler_investimentos);
+
         new FirebaseHelper().recuperar(new FirebaseHelper.DataStatus() {
             @Override
             public void isLoaded(List<Investimento> investimentos, List<String> keys) {

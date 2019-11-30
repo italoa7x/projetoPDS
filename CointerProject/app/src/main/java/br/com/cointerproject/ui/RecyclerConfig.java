@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -21,14 +22,18 @@ public class RecyclerConfig {
     public void setConfig(RecyclerView recycler, Context context, List<Investimento> investimentos,List<String> keys){
         this.context = context;
         this.adapter = new InvestimentoAdapter(investimentos,keys);
-        recycler.setLayoutManager(new LinearLayoutManager(context));
+        LinearLayoutManager layoutManager = new LinearLayoutManager(context);
+        recycler.setLayoutManager(layoutManager);
+
+        DividerItemDecoration divider = new DividerItemDecoration(recycler.getContext(),
+                layoutManager.getOrientation());
+        recycler.addItemDecoration(divider);
         recycler.setAdapter(adapter);
     }
 
 
     class ItemViewer extends RecyclerView.ViewHolder{
         private TextView nome;
-        private TextView status;
         private TextView valor;
         private TextView lucro;
 
@@ -37,7 +42,6 @@ public class RecyclerConfig {
         public ItemViewer (ViewGroup parent){
             super(LayoutInflater.from(context).inflate(R.layout.itens,parent,false));
             nome = itemView.findViewById(R.id.nome_investimento);
-            status =  itemView.findViewById(R.id.status_investimento);
             valor =  itemView.findViewById(R.id.valor_investimento);
             lucro =  itemView.findViewById(R.id.lucro_investimento);
 
@@ -47,7 +51,6 @@ public class RecyclerConfig {
             valor.setText(String.valueOf(i.getValor()));
             lucro.setText(String.valueOf(i.getLucro()));
             nome.setText(i.getNome());
-            status.setText(i.getStatus());
         }
     }
 
