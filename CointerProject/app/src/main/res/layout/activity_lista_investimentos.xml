@@ -5,22 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/cor_padrao_telas"
-    tools:context=".ui.AcompanharInvestimento">
+    tools:context=".view.ListaInvestimentos">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="328dp"
-        android:layout_marginBottom="672dp"
-        android:text="TextView"
-        android:textColor="#FFFF"
-        android:textColorHint="#FFFF"
-        android:textColorLink="#FFFF"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_investimentos"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="#FFFF"
+        android:textColorHint="#FFFF"
+        android:textColorLink="#FFFF"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
