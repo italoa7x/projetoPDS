@@ -8,7 +8,7 @@
     tools:context=".ui.AcompanharInvestimento">
 
     <TextView
-        android:id="@+id/textView36"
+        android:id="@+id/campo_liquidez"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="250dp"
@@ -23,7 +23,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView35"
+        android:id="@+id/campo_bruto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="250dp"
@@ -37,7 +37,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView34"
+        android:id="@+id/campo_retorno"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -53,7 +53,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView33"
+        android:id="@+id/campo_bvmf"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
@@ -67,7 +67,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView32"
+        android:id="@+id/campo_ir"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="310dp"
@@ -81,7 +81,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView31"
+        android:id="@+id/campo_iof"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
@@ -95,10 +95,10 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView30"
+        android:id="@+id/campo_investido"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="210dp"
         android:layout_marginEnd="320dp"
         android:layout_marginBottom="493dp"
@@ -111,10 +111,10 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView29"
+        android:id="@+id/campo_liquido"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="210dp"
         android:layout_marginEnd="170dp"
         android:layout_marginBottom="493dp"
@@ -127,7 +127,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView28"
+        android:id="@+id/campo_status"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
@@ -156,7 +156,7 @@
         android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView36"
+        app:layout_constraintStart_toEndOf="@+id/campo_liquidez"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -165,9 +165,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="300dp"
         android:layout_marginTop="70dp"
-        android:layout_marginEnd="50dp"
+        android:layout_marginEnd="80dp"
         android:layout_marginBottom="630dp"
-        android:text="R$"
+        android:text="Status:"
         android:textColor="#FFFF"
         android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -232,15 +232,15 @@
         android:textColor="#FFFF"
         android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/textView33"
+        app:layout_constraintEnd_toStartOf="@+id/campo_bvmf"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/campo_moeda"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="70dp"
         android:layout_marginEnd="270dp"
         android:layout_marginBottom="630dp"
@@ -425,7 +425,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="250dp"
         android:layout_marginTop="50dp"
-        android:text="Corretora"
+        android:text="Retorno Final"
         android:textColor="#FFFF"
         android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
