@@ -68,7 +68,7 @@ public class CadastroInvActivity extends AppCompatActivity {
             DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child(uid);
             ref.push().setValue(investimento);
             Toast.makeText(CadastroInvActivity.this, "Investimento Cadastrado", Toast.LENGTH_LONG).show();
-            Intent it = new Intent(CadastroInvActivity.this, ListaInvestimento.class);
+            Intent it = new Intent(CadastroInvActivity.this, ListaInvestimentos.class);
             startActivity(it);
         }
     }
