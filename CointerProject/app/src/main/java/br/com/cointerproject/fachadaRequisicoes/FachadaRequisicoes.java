@@ -13,7 +13,7 @@ public class FachadaRequisicoes {
             case "DOLAR":
                 recuperarDolar(context, areaValorMoeda);
                 break;
-            case "DOLAR CANADENCE":
+            case "DOLAR CANADENSE":
                 recuperarDolarCan(context, areaValorMoeda);
                 break;
             case "BCASH":
