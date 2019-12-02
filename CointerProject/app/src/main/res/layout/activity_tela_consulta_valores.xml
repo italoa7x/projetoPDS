@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/cor_padrao_telas"
-    tools:context=".TelaConsultaValores">
+    tools:context=".view.TelaConsultaValores">
 
     <Spinner
         android:id="@+id/comboMoedas"
@@ -51,10 +51,11 @@
         android:layout_marginTop="78dp"
         android:layout_marginEnd="50dp"
         android:layout_marginBottom="356dp"
-        android:textSize="50dp"
+        android:textAlignment="center"
         android:textColor="#FFFF"
         android:textColorHint="#FFFF"
         android:textColorLink="#FFFF"
+        android:textSize="40dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.537"
