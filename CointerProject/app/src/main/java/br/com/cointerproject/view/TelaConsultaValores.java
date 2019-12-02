@@ -1,4 +1,4 @@
-package br.com.cointerproject.view;
+package br.com.cointerproject;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,8 +9,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import br.com.cointerproject.R;
 import br.com.cointerproject.fachadaRequisicoes.*;
 
 public class TelaConsultaValores extends AppCompatActivity {
@@ -24,7 +22,7 @@ public class TelaConsultaValores extends AppCompatActivity {
         fachada = new FachadaRequisicoes();
         areaValorMoeda = findViewById(R.id.txtValorMoeda);
         comboMoedas = findViewById(R.id.comboMoedas);
-        String[] moedas = {"Selecione uma moeda", "Dolar","Euro","Libra", "Dolar Canadense","Bitcoin","LiteCoin","Ethereun","BCash","XRP"};
+        String[] moedas = {"Selecione uma moeda", "Dolar","Euro","Libra", "Dolar Canadence","Bitcoin","LiteCoin","Ethereun","BCash","XRP"};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_activated_1, moedas);
         comboMoedas.setAdapter(adapter);
 
