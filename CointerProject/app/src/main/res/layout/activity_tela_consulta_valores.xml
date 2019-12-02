@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/cor_padrao_telas"
     tools:context=".TelaConsultaValores">
 
     <Spinner
@@ -14,6 +15,10 @@
         android:layout_marginTop="50dp"
         android:layout_marginEnd="40dp"
         android:layout_marginBottom="488dp"
+        android:textColor="#FFFF"
+        android:textColorHint="#FFFF"
+        android:textColorLink="#FFFF"
+        android:backgroundTint="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -30,6 +35,9 @@
         android:layout_marginBottom="388dp"
         android:text="Vale R$"
         android:textSize="50dp"
+        android:textColor="#FFFF"
+        android:textColorHint="#FFFF"
+        android:textColorLink="#FFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.537"
@@ -44,6 +52,9 @@
         android:layout_marginEnd="50dp"
         android:layout_marginBottom="356dp"
         android:textSize="50dp"
+        android:textColor="#FFFF"
+        android:textColorHint="#FFFF"
+        android:textColorLink="#FFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.537"

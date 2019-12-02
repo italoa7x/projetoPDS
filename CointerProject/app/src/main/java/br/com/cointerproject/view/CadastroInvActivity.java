@@ -20,7 +20,6 @@ import java.util.Locale;
 import br.com.cointerproject.R;
 import br.com.cointerproject.model.Investimento;
 import br.com.cointerproject.model.Mercado;
-import br.com.cointerproject.ui.ListaInvestimento;
 import br.com.cointerproject.ui.MoneyTextWatcher;
 
 public class CadastroInvActivity extends AppCompatActivity {
