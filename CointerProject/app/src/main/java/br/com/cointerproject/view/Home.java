@@ -15,7 +15,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 import br.com.cointerproject.R;
-import br.com.cointerproject.TelaConsultaValores;
 
 public class Home extends AppCompatActivity {
     private TextView textoHome;
