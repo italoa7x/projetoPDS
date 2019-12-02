@@ -15,7 +15,7 @@ public class AcompanharInvestimento extends AppCompatActivity {
         setContentView(R.layout.activity_acompanhar_investimento);
         Intent it = getIntent();
         String parametro = (String) it.getSerializableExtra("nome");
-        TextView nome = (TextView) findViewById(R.id.textView);
-        nome.setText(parametro);
+      //  TextView nome = (TextView) findViewById(R.id.textView);
+      //  nome.setText(parametro);
     }
 }

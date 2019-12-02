@@ -31,6 +31,7 @@ public class Home extends AppCompatActivity {
         FirebaseUser u = f.getCurrentUser();
         textoHome.setText(u.getDisplayName());
 
+
         botao.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
