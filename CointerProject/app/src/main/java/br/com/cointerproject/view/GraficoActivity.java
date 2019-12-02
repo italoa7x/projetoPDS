@@ -25,7 +25,7 @@ public class GraficoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_grafico);
 
         GraphView graph = (GraphView) findViewById(R.id.graph);
-        BarGraphSeries<DataPoint> series = new BarGraphSeries<>(new DataPoint[]{
+        LineGraphSeries<DataPoint> series = new LineGraphSeries<>(new DataPoint[]{
                 new DataPoint(1, 1),
                 new DataPoint(2, 5),
                 new DataPoint(3, 3),
@@ -57,7 +57,7 @@ public class GraficoActivity extends AppCompatActivity {
         }
 
         Calendar cal = Calendar.getInstance();
-        cal.setTime (dt1);
+        cal.setTime(dt1);
         for (int i = 5; i >= 0; i--) {
             cal.add(Calendar.DAY_OF_MONTH, -1);
             datas[i] = df.format(cal.getTime());
