@@ -45,8 +45,8 @@ public class Home extends AppCompatActivity {
     }
 
     public void mudarTelaConsultas(View view){
-        //Intent it = new Intent(Home.this, TelaConsultaValores.class);
-        //startActivity(it);
+        Intent it = new Intent(Home.this, TelaConsultaValores.class);
+        startActivity(it);
     }
 
     public void telaCadastroI(View view){
