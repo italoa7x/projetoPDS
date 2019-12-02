@@ -26,13 +26,13 @@ public class GraficoActivity extends AppCompatActivity {
 
         GraphView graph = (GraphView) findViewById(R.id.graph);
         LineGraphSeries<DataPoint> series = new LineGraphSeries<>(new DataPoint[]{
-                new DataPoint(1, 1),
-                new DataPoint(2, 5),
-                new DataPoint(3, 3),
-                new DataPoint(4, 2),
-                new DataPoint(5, 6.5),
-                new DataPoint(6, 2.5),
-                new DataPoint(7, 4)
+                new DataPoint(0, 1),
+                new DataPoint(2.5, 5),
+                new DataPoint(4, 3),
+                new DataPoint(6, 2),
+                new DataPoint(8, 6.5),
+                new DataPoint(10, 2.5),
+                new DataPoint(12, 4)
         });
 
         String[] datas = pegarDiasDaSemana();
