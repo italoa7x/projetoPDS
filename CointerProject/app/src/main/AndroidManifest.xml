@@ -13,6 +13,10 @@
         <activity android:name=".view.Home" />
         <activity android:name=".TelaConsultaValores" />
         <activity
+            android:name=".view.GraficoActivity"
+            android:label="title_activity_grafico"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".view.CadastroActivity"
             android:label="title_activity_cadastro"
             android:theme="@style/AppTheme.NoActionBar" />
