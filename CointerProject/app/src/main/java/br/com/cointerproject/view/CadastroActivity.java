@@ -5,7 +5,6 @@ import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-
 import br.com.cointerproject.R;
 import br.com.cointerproject.controller.ControllerUsuario;
 import br.com.cointerproject.dto.UsuarioDTO;
