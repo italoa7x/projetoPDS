@@ -39,7 +39,7 @@ public class CadastroInvActivity extends AppCompatActivity {
         valor = findViewById(R.id.txvalor);
         spinnerMercado = findViewById(R.id.spinermercado);
         spinnerFonte = findViewById(R.id.spinerfonte);
-        String[] mercado = {"Selecione uma moeda",Mercado.FOREX.name()};
+        String[] mercado = {"Selecione uma mercado de investimento",Mercado.FOREX.name()};
         ArrayAdapter<String> adapterMercado = new ArrayAdapter<>(this, android.R.layout.simple_list_item_activated_1, mercado);
         String[] moedas = {"Selecione uma moeda", "Dolar","Euro","Libra", "Dolar Canadence","Bitcoin","LiteCoin","Ethereun","BCash","XRP"};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_activated_1, moedas);
@@ -68,7 +68,7 @@ public class CadastroInvActivity extends AppCompatActivity {
             DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child(uid);
             ref.push().setValue(investimento);
             Toast.makeText(CadastroInvActivity.this, "Investimento Cadastrado", Toast.LENGTH_LONG).show();
-            Intent it = new Intent(CadastroInvActivity.this, ListaInvestimento.class);
+            Intent it = new Intent(CadastroInvActivity.this, ListaInvestimentos.class);
             startActivity(it);
         }
     }
