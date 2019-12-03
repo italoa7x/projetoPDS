@@ -37,6 +37,7 @@
         android:id="@+id/txtCadastrar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:clickable="true"
         android:text="Criar conta"
         android:textAlignment="textEnd"
         android:textColor="#FFFFFF"

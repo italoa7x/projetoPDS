@@ -1,92 +1,102 @@
 package br.com.cointerproject.view;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
-
 import android.view.View;
-
-import androidx.navigation.ui.AppBarConfiguration;
-
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 import br.com.cointerproject.R;
-import br.com.cointerproject.controller.ControllerUsuario;
-import br.com.cointerproject.model.exceptions.ErroAoLogarException;
-import br.com.cointerproject.model.Usuario;
-import br.com.cointerproject.view.utils.ValidarEmail;
+import br.com.cointerproject.model.Validacao;
 
 public class MainActivity extends AppCompatActivity {
 
-    private AppBarConfiguration mAppBarConfiguration;
     private TextView txtCadastrar;
     private Button btAcessar;
     private EditText areaEmail;
     private EditText areaSenha;
+    private FirebaseAuth firebaseAuth;
 
-
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_login);
-        this.logarNoSistema();
-    }
-
-    // Usei essa método para ser executado no momento em que a tela for construida.
-    private void logarNoSistema() {
         txtCadastrar = findViewById(R.id.txtCadastrar);
         areaEmail = findViewById(R.id.campoEmail);
         areaSenha = findViewById(R.id.campoSenha);
-
-        // O método abaixo verifica se foi clicado no TextView "Cadastrar", se sim, ele irá trocar para a tela de cadastro.
+        btAcessar = findViewById(R.id.btAcessar);
+        firebaseAuth = FirebaseAuth.getInstance();
+        // O código abaixo chama a tela de cadastro.
         txtCadastrar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
+            public void onClick(View v) {
+                irParaCadastro(v);
             }
         });
 
-        // O método abaixo foi criado para verificar se o botão acessar foi clicado, se sim, é feito a lógica para validar os dados.
+        firebaseAuth = FirebaseAuth.getInstance();
+        if(firebaseAuth.getCurrentUser()!=null){
+            Toast.makeText(getApplicationContext(), "Logado", Toast.LENGTH_SHORT);
+            Intent t = new Intent(MainActivity.this, Home.class);
+            startActivity(t);
+        }
+
+        logarNoSistema();
+
+    }
+
+
+    // Usei essa método para ser executado no momento em que a tela for construida.
+    // O método abaixo foi criado para verificar se o botão acessar foi clicado, se sim, é feito a lógica para validar os dados.
+    private void logarNoSistema() {
         btAcessar = findViewById(R.id.btAcessar);
         btAcessar.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("WrongConstant")
             @Override
             public void onClick(View v) {
                 String email = areaEmail.getText().toString();
                 String senha = areaSenha.getText().toString();
 
                 Toast mensagem;
-                ControllerUsuario controllerUsuario = new ControllerUsuario();
+                firebaseAuth = FirebaseAuth.getInstance();
 
                 if(email.length() > 0 && senha.length() > 0){
-                    boolean validao = ValidarEmail.validar(email);
+                    boolean validao = Validacao.validarEmail(email);
                     if(validao){
-                        try {
-                            Usuario user = new Usuario();
-                            user.setEmail(email);
-                            user.setSenha(senha);
-                            Usuario usuarioValidado = controllerUsuario.logar(user);
-                            if(usuarioValidado != null){
 
-                            }
-                        } catch (ErroAoLogarException e) {
-                            mensagem = Toast.makeText(getApplicationContext(), e.getMessage(), 2000);
-                            mensagem.show();
-                        }
+                        firebaseAuth.signInWithEmailAndPassword(email, senha)
+                                .addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<AuthResult> task) {
+                                        if (task.isSuccessful()) {
+                                            Toast.makeText(getApplicationContext(), "Login efetuado com sucesso", Toast.LENGTH_SHORT);
+                                            Intent t = new Intent(MainActivity.this, Home.class);
+                                            startActivity(t);
+                                        } else {
+                                            Toast.makeText(getApplicationContext(), "E-mail ou senha inválido.", Toast.LENGTH_SHORT);
+                                        }
+                                    }
+                                });
+
 
                     }
                 }
                 // Essa verificação foi feita para caso a entrada do campo e-mail for igual a 0, significa que o usuário não digitou nada. Então, ele recebe um aviso.
                 else if(email.length() == 0){
-                    mensagem =  Toast.makeText(getApplicationContext(), "Digite o e-mail.", 2000);
+                    mensagem =  Toast.makeText(getApplicationContext(), "Digite o e-mail.", Toast.LENGTH_SHORT);
                     mensagem.show();
                     areaEmail.requestFocus();
                 }
                 // Essa verificação foi feita para caso a entrada do campo senha for igual a 0, significa que o usuário não digitou nada. Então, ele recebe um aviso.
                 else if(senha.length() == 0){
-                    mensagem =  Toast.makeText(getApplicationContext(), "Digite a senha.", 2000);
+                    mensagem =  Toast.makeText(getApplicationContext(), "Digite a senha.", Toast.LENGTH_SHORT);
                     mensagem.show();
                     areaSenha.requestFocus();
                 }
@@ -96,5 +106,12 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    public void irParaCadastro(View view) {
+        Intent intent = new Intent(getApplicationContext(), CadastroActivity.class);
+        startActivity(intent);
+    }
 
 }
+
+
+
