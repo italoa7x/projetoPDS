@@ -15,6 +15,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import br.com.cointerproject.R;
+import br.com.cointerproject.TelaDashBoard;
 import br.com.cointerproject.model.Validacao;
 
 public class MainActivity extends AppCompatActivity {
@@ -41,21 +42,20 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        logarNoSistema();
+        }
+
+
+    // Este método serve para ser executado no momento em que a tela for construida.
+    // O método abaixo foi criado para verificar se o botão acessar foi clicado, se sim, é feito a lógica para validar os dados.
+    private void logarNoSistema() {
         firebaseAuth = FirebaseAuth.getInstance();
         if(firebaseAuth.getCurrentUser()!=null){
             Toast.makeText(getApplicationContext(), "Logado", Toast.LENGTH_SHORT);
-            Intent t = new Intent(MainActivity.this, Home.class);
+            Intent t = new Intent(MainActivity.this, TelaDashBoard.class);
             startActivity(t);
         }
 
-        logarNoSistema();
-
-    }
-
-
-    // Usei essa método para ser executado no momento em que a tela for construida.
-    // O método abaixo foi criado para verificar se o botão acessar foi clicado, se sim, é feito a lógica para validar os dados.
-    private void logarNoSistema() {
         btAcessar = findViewById(R.id.btAcessar);
         btAcessar.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("WrongConstant")
@@ -70,22 +70,19 @@ public class MainActivity extends AppCompatActivity {
                 if(email.length() > 0 && senha.length() > 0){
                     boolean validao = Validacao.validarEmail(email);
                     if(validao){
-
                         firebaseAuth.signInWithEmailAndPassword(email, senha)
                                 .addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
                                     @Override
                                     public void onComplete(@NonNull Task<AuthResult> task) {
                                         if (task.isSuccessful()) {
                                             Toast.makeText(getApplicationContext(), "Login efetuado com sucesso", Toast.LENGTH_SHORT);
-                                            Intent t = new Intent(MainActivity.this, Home.class);
+                                            Intent t = new Intent(MainActivity.this, TelaDashBoard.class);
                                             startActivity(t);
                                         } else {
                                             Toast.makeText(getApplicationContext(), "E-mail ou senha inválido.", Toast.LENGTH_SHORT);
                                         }
                                     }
                                 });
-
-
                     }
                 }
                 // Essa verificação foi feita para caso a entrada do campo e-mail for igual a 0, significa que o usuário não digitou nada. Então, ele recebe um aviso.
@@ -100,8 +97,6 @@ public class MainActivity extends AppCompatActivity {
                     mensagem.show();
                     areaSenha.requestFocus();
                 }
-
-
             }
         });
     }

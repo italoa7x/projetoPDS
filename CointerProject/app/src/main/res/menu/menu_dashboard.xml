@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_home_black_24dp"
+            android:title="Iniciar" />
+        <item
+            android:id="@+id/nav_perfil"
+            android:icon="@drawable/icone_perfil"
+            android:title="Perfil" />
+
+        <item
+            android:id="@+id/nav_meus_investimentos"
+            android:icon="@drawable/icone_listar"
+            android:title="Meus investimentos" />
+
+        <item
+            android:id="@+id/nav_novo_investimento"
+            android:icon="@drawable/icone_novo_investimento"
+            android:title="Novo investimento" />
+        />
+
+        <item
+            android:id="@+id/nav_valores"
+            android:icon="@drawable/icone_dinheiro"
+            android:title="Consultar" />
+        />
+    </group>
+
+</menu>
