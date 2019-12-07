@@ -42,19 +42,24 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        verificarUsuarioLogado();
         logarNoSistema();
-        }
+    }
 
-
-    // Este método serve para ser executado no momento em que a tela for construida.
-    // O método abaixo foi criado para verificar se o botão acessar foi clicado, se sim, é feito a lógica para validar os dados.
-    private void logarNoSistema() {
+    private void verificarUsuarioLogado() {
         firebaseAuth = FirebaseAuth.getInstance();
         if(firebaseAuth.getCurrentUser()!=null){
             Toast.makeText(getApplicationContext(), "Logado", Toast.LENGTH_SHORT);
             Intent t = new Intent(MainActivity.this, TelaDashBoard.class);
             startActivity(t);
+        }else{
+            Toast.makeText(this, "Entre com e-mail e senha.", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    // Este método serve para ser executado no momento em que a tela for construida.
+    // O método abaixo foi criado para verificar se o botão acessar foi clicado, se sim, é feito a lógica para validar os dados.
+    private void logarNoSistema() {
 
         btAcessar = findViewById(R.id.btAcessar);
         btAcessar.setOnClickListener(new View.OnClickListener() {
