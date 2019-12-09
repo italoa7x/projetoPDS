@@ -15,24 +15,27 @@ import br.com.cointerproject.R;
 import br.com.cointerproject.fachadaRequisicoes.*;
 
 public class TelaConsultaValores extends AppCompatActivity {
+
     private TextView areaValorMoeda;
     private Spinner comboMoedas;
     private FachadaRequisicoes fachada;
-    @Override
+    private String moedaSelecionada;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_consulta_valores);
+
         fachada = new FachadaRequisicoes();
         areaValorMoeda = findViewById(R.id.txtValorMoeda);
         comboMoedas = findViewById(R.id.comboMoedas);
-        String[] moedas = {"Selecione uma moeda", "Dolar","Euro","Libra", "Dolar Canadence","Bitcoin","LiteCoin","Ethereun","BCash","XRP"};
+        String[] moedas = {"Selecione uma moeda", "Dolar","Euro","Libra", "Dolar Canadense","Bitcoin","LiteCoin","Ethereun","BCash","XRP"};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_activated_1, moedas);
         comboMoedas.setAdapter(adapter);
 
         comboMoedas.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String moedaSelecionada = comboMoedas.getSelectedItem().toString();
+                moedaSelecionada = comboMoedas.getSelectedItem().toString();
                 if(!moedaSelecionada.equals("Selecione uma moeda")){
                     try {
                         fachada.consultar(getApplicationContext(), moedaSelecionada, areaValorMoeda);
@@ -50,6 +53,7 @@ public class TelaConsultaValores extends AppCompatActivity {
 
     public void exibirGrafico(View view) {
         Intent intent = new Intent(getApplicationContext(), GraficoActivity.class);
+        intent.putExtra("moeda", moedaSelecionada);
         startActivity(intent);
     }
 }
