@@ -8,7 +8,10 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme.NoActionBar">
+        <activity
+            android:name=".view.HomeActivity"
+            android:label="title_activity_home2" />
         <activity android:name=".view.ListaInvestimentos" />
         <activity android:name=".view.Home" />
         <activity android:name=".view.TelaConsultaValores" />
@@ -34,7 +37,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.ListaInvestimentos" />
         <activity android:name=".ui.AcompanharInvestimento" />
         <activity android:name=".view.CadastroInvActivity" />
 

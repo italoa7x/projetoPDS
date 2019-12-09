@@ -2,6 +2,7 @@ package br.com.cointerproject.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -14,13 +15,16 @@ import br.com.cointerproject.R;
 import br.com.cointerproject.fachadaRequisicoes.*;
 
 public class TelaConsultaValores extends AppCompatActivity {
+
     private TextView areaValorMoeda;
     private Spinner comboMoedas;
     private FachadaRequisicoes fachada;
-    @Override
+    private String moedaSelecionada;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_consulta_valores);
+
         fachada = new FachadaRequisicoes();
         areaValorMoeda = findViewById(R.id.txtValorMoeda);
         comboMoedas = findViewById(R.id.comboMoedas);
@@ -31,7 +35,7 @@ public class TelaConsultaValores extends AppCompatActivity {
         comboMoedas.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String moedaSelecionada = comboMoedas.getSelectedItem().toString();
+                moedaSelecionada = comboMoedas.getSelectedItem().toString();
                 if(!moedaSelecionada.equals("Selecione uma moeda")){
                     try {
                         fachada.consultar(getApplicationContext(), moedaSelecionada, areaValorMoeda);
@@ -45,5 +49,11 @@ public class TelaConsultaValores extends AppCompatActivity {
 
             }
         });
+    }
+
+    public void exibirGrafico(View view) {
+        Intent intent = new Intent(getApplicationContext(), GraficoActivity.class);
+        intent.putExtra("moeda", moedaSelecionada);
+        startActivity(intent);
     }
 }
