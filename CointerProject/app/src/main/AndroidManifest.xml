@@ -9,16 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".TelaDashBoard"></activity>
-        <activity
-            android:name=".telaPrincipal"
-            android:label="@string/title_activity_tela_principal" />
-        <activity
-            android:name=".HomeComMenu"
-            android:label="@string/title_activity_home_com_menu"
-            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".tela_home"></activity>
+
         <activity android:name=".view.ListaInvestimentos" />
-        <activity android:name=".view.Home" />
         <activity android:name=".view.TelaConsultaValores" />
         <activity
             android:name=".view.GraficoActivity"
@@ -29,7 +22,7 @@
             android:label="title_activity_cadastro"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ui.login.TelaLogin"
+            android:name=".ui."
             android:label="@string/title_activity_tela_login" />
         <activity
             android:name=".view.MainActivity"
@@ -44,7 +37,6 @@
         </activity>
         <activity android:name=".ui.AcompanharInvestimento" />
         <activity android:name=".view.CadastroInvActivity" />
-        <activity android:name=".view.MenuLateral" />
 
         <meta-data
             android:name="preloaded_fonts"
