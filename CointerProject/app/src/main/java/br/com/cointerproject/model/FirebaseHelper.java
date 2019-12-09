@@ -24,13 +24,13 @@ public class FirebaseHelper {
         void inserted();
         void updated();
         void deleted();
+
     }
 
     public FirebaseHelper(){
         firebaseDatabase = FirebaseDatabase.getInstance();
         user = FirebaseAuth.getInstance().getCurrentUser();
         reference = firebaseDatabase.getReference(user.getUid());
-
     }
 
     public void recuperar(final DataStatus status){

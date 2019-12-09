@@ -3,10 +3,12 @@ package br.com.cointerproject.ui;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
-
 import br.com.cointerproject.R;
 import br.com.cointerproject.model.Investimento;
+import br.com.cointerproject.view.Home;
 
 public class AcompanharInvestimento extends AppCompatActivity {
     private TextView moeda;
@@ -19,7 +21,9 @@ public class AcompanharInvestimento extends AppCompatActivity {
     private TextView ir;
     private TextView bvmf;
     private TextView retorno;
-
+    private Button excluir;
+    private Button editar;
+    private Button finalizar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,13 +42,36 @@ public class AcompanharInvestimento extends AppCompatActivity {
 
 
         Intent it = getIntent();
-        Investimento parametro = (Investimento) it.getSerializableExtra("investimento");
+        final Investimento parametro = (Investimento) it.getSerializableExtra("investimento");
         moeda.setText(parametro.getMoeda());
         status.setText(parametro.getStatus());
         valor.setText(String.valueOf(parametro.getValor()));
 
-      //  TextView nome = (TextView) findViewById(R.id.textView);
-      //  nome.setText(parametro);
+        excluir = findViewById(R.id.button_excluir);
+        excluir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it = new Intent(AcompanharInvestimento.this, Home.class);
+                startActivity(it);
+            }
+        });
+
+        editar = findViewById(R.id.button_editar);
+        editar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        finalizar = findViewById(R.id.button_finalizar);
+        finalizar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
 
     }
 }
