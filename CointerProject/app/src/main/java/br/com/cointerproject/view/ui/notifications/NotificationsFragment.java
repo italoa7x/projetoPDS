@@ -12,7 +12,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
-import br.com.cointerproject.view.R;
+import br.com.cointerproject.R;
 
 public class NotificationsFragment extends Fragment {
 
