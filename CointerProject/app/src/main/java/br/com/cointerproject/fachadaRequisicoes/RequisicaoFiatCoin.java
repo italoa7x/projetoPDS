@@ -3,22 +3,14 @@ package br.com.cointerproject.fachadaRequisicoes;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.widget.TextView;
-
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.util.Map;
 
 public class RequisicaoFiatCoin implements ITrequisicoes {
 
