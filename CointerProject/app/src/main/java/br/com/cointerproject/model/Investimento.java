@@ -3,11 +3,11 @@ package br.com.cointerproject.model;
 
 import com.google.firebase.database.IgnoreExtraProperties;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 @IgnoreExtraProperties
-public class Investimento {
+public class Investimento implements Serializable {
 
     private String id;
     private String nome;

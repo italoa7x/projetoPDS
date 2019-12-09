@@ -11,9 +11,10 @@
         android:id="@+id/recycler_investimentos"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:contextClickable="true"
+        android:textColor="#FFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:textColor="#FFFF"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
