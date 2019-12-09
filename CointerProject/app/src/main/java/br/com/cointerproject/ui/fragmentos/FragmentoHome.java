@@ -1,4 +1,4 @@
-package br.com.cointerproject.ui.fragmentos_menu;
+package br.com.cointerproject.ui.fragmentos;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,11 +11,11 @@ import androidx.fragment.app.Fragment;
 
 import br.com.cointerproject.R;
 
-public class FragmentNovoInvestimento extends Fragment {
+public class FragmentoHome extends Fragment {
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.activity_cadastro_investimento, container, false);
+        return inflater.inflate(R.layout.activity_tela_home, container, false);
     }
 }

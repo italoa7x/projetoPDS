@@ -30,7 +30,7 @@
             android:label="title_activity_cadastro"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ui.login.TelaLogin"
+            android:name=".ui.fragmentos_menu.login.TelaLogin"
             android:label="@string/title_activity_tela_login" />
         <activity
             android:name=".view.MainActivity"
