@@ -69,7 +69,7 @@ public class CadastroActivity extends AppCompatActivity {
                                         .setDisplayName(tiNome.getText().toString())
                                         .build();
                                 user.updateProfile(profileUpdates);
-                                Intent t = new Intent(CadastroActivity.this, Home.class);
+                                Intent t = new Intent(CadastroActivity.this, MainActivity.class);
                                 startActivity(t);
 
                             } else {

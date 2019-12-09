@@ -3,8 +3,8 @@ package br.com.cointerproject.ui;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.TextureView;
 import android.widget.TextView;
+
 import br.com.cointerproject.R;
 import br.com.cointerproject.model.Investimento;
 
@@ -35,6 +35,7 @@ public class AcompanharInvestimento extends AppCompatActivity {
         ir = findViewById(R.id.campo_ir);
         bvmf = findViewById(R.id.campo_bvmf);
         retorno = findViewById(R.id.campo_retorno);
+
 
         Intent it = getIntent();
         Investimento parametro = (Investimento) it.getSerializableExtra("investimento");
