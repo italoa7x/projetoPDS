@@ -15,7 +15,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import br.com.cointerproject.R;
-import br.com.cointerproject.TelaDashBoard;
+import br.com.cointerproject.TelaHome;
 import br.com.cointerproject.model.Validacao;
 
 public class MainActivity extends AppCompatActivity {
@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
         if(firebaseAuth.getCurrentUser()!=null){
             Toast.makeText(getApplicationContext(), "Logado", Toast.LENGTH_SHORT);
-            Intent t = new Intent(MainActivity.this, TelaDashBoard.class);
+            Intent t = new Intent(MainActivity.this, TelaHome.class);
             startActivity(t);
         }else{
             Toast.makeText(this, "Entre com e-mail e senha.", Toast.LENGTH_SHORT).show();
@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
                                     public void onComplete(@NonNull Task<AuthResult> task) {
                                         if (task.isSuccessful()) {
                                             Toast.makeText(getApplicationContext(), "Login efetuado com sucesso", Toast.LENGTH_SHORT);
-                                            Intent t = new Intent(MainActivity.this, TelaDashBoard.class);
+                                            Intent t = new Intent(MainActivity.this, TelaHome.class);
                                             startActivity(t);
                                         } else {
                                             Toast.makeText(getApplicationContext(), "E-mail ou senha inválido.", Toast.LENGTH_SHORT);

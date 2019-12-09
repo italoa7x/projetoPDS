@@ -15,6 +15,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
 import br.com.cointerproject.R;
+import br.com.cointerproject.TelaHome;
 import br.com.cointerproject.model.Validacao;
 
 public class CadastroActivity extends AppCompatActivity {
@@ -69,7 +70,7 @@ public class CadastroActivity extends AppCompatActivity {
                                         .setDisplayName(tiNome.getText().toString())
                                         .build();
                                 user.updateProfile(profileUpdates);
-                                Intent t = new Intent(CadastroActivity.this, Home.class);
+                                Intent t = new Intent(CadastroActivity.this, TelaHome.class);
                                 startActivity(t);
 
                             } else {

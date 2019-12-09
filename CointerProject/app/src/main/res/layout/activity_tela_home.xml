@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:id="@+id/drawerLayout"
     android:fitsSystemWindows="true"
-    tools:context=".tela_home">
+    tools:context=".TelaHome">
 
     <include
         layout="@layout/estilo_menu_lateral"
@@ -19,7 +19,8 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:id="@+id/nav_menu"
-        app:headerLayout="@layout/header_menu"
+
+        app:menu="@menu/drawer_menu"
         android:fitsSystemWindows="true"
         android:layout_gravity="start"
         >

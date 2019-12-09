@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".tela_home"></activity>
+        <activity android:name=".TelaHome"></activity>
 
         <activity android:name=".view.ListaInvestimentos" />
         <activity android:name=".view.TelaConsultaValores" />
@@ -22,7 +22,7 @@
             android:label="title_activity_cadastro"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ui."
+            android:name=".ui.login.TelaLogin"
             android:label="@string/title_activity_tela_login" />
         <activity
             android:name=".view.MainActivity"
