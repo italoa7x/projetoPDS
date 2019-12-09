@@ -11,7 +11,7 @@
         android:theme="@style/AppTheme.NoActionBar">
         <activity
             android:name=".view.HomeActivity"
-            android:label="title_activity_home2"></activity>
+            android:label="title_activity_home2" />
         <activity android:name=".view.ListaInvestimentos" />
         <activity android:name=".view.Home" />
         <activity android:name=".view.TelaConsultaValores" />
@@ -37,7 +37,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.ListaInvestimentos" />
         <activity android:name=".ui.AcompanharInvestimento" />
         <activity android:name=".view.CadastroInvActivity" />
 
