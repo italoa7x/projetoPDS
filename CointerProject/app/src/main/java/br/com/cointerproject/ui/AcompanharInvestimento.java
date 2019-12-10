@@ -52,6 +52,8 @@ public class AcompanharInvestimento extends AppCompatActivity {
 
         Intent it = getIntent();
         final Investimento parametro = (Investimento) it.getSerializableExtra("investimento");
+
+
         moeda.setText(parametro.getMoeda());
         status.setText(parametro.getStatus());
         valor.setText(String.valueOf(parametro.getValor()));
@@ -60,7 +62,9 @@ public class AcompanharInvestimento extends AppCompatActivity {
         excluir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                
+                DatabaseReference ref = FirebaseDatabase.getInstance().getReference()
+                        .child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(parametro.getId());
+                ref.removeValue();
                 Intent it = new Intent(AcompanharInvestimento.this, Home.class);
                 startActivity(it);
             }
