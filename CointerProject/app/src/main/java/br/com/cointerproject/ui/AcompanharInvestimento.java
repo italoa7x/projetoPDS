@@ -6,6 +6,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import br.com.cointerproject.R;
 import br.com.cointerproject.model.Investimento;
 import br.com.cointerproject.view.Home;
@@ -39,6 +45,9 @@ public class AcompanharInvestimento extends AppCompatActivity {
         ir = findViewById(R.id.campo_ir);
         bvmf = findViewById(R.id.campo_bvmf);
         retorno = findViewById(R.id.campo_retorno);
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String uid = user.getUid();
+
 
 
         Intent it = getIntent();
@@ -51,6 +60,7 @@ public class AcompanharInvestimento extends AppCompatActivity {
         excluir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                
                 Intent it = new Intent(AcompanharInvestimento.this, Home.class);
                 startActivity(it);
             }

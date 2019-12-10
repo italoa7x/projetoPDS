@@ -43,7 +43,9 @@ public class FirebaseHelper {
                 for (DataSnapshot key:dataSnapshot.getChildren()){
                     keys.add(key.getKey());
                     Investimento inv = key.getValue(Investimento.class);
+                    inv.setId(key.getRef().getKey());
                     investimentos.add(inv);
+
                 }
                 status.isLoaded(investimentos,keys);
             }
