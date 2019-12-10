@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import br.com.cointerproject.MeuPerfil;
 import br.com.cointerproject.R;
 
 public class Home extends AppCompatActivity {
@@ -56,6 +57,11 @@ public class Home extends AppCompatActivity {
 
     public void listaInvestimentos(View view){
         Intent it = new Intent(Home.this, ListaInvestimentos.class);
+        startActivity(it);
+    }
+
+    public void meuPerfil(View view){
+        Intent it = new Intent(Home.this, MeuPerfil.class);
         startActivity(it);
     }
 }

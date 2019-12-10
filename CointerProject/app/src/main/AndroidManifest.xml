@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
+        <activity android:name=".MeuPerfil"></activity>
         <activity
             android:name=".view.HomeActivity"
             android:label="title_activity_home2" />
