@@ -36,14 +36,12 @@
         android:id="@+id/txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="32dp"
         android:fontFamily="@font/archivo_black"
         android:text="E-mail"
         android:textColor="#FFFFFF"
         android:textSize="15dp"
-        app:layout_constraintBottom_toTopOf="@+id/areaEmailusuario"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/areaNomeUsuario" />
 
@@ -66,7 +64,7 @@
         android:id="@+id/areaNomeUsuario"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         android:ems="10"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
@@ -77,13 +75,13 @@
         android:id="@+id/areaEmailusuario"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="260dp"
+        android:layout_marginTop="30dp"
         android:ems="10"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt" />
 
     <Button
         android:id="@+id/btExcluirConta"
@@ -93,6 +91,7 @@
         android:layout_marginTop="75dp"
         android:layout_marginEnd="69dp"
         android:background="@drawable/estilo_bt_redondo"
+        android:onClick="excluirConta"
         android:text="Excluir"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -108,6 +107,7 @@
         android:layout_marginTop="76dp"
         android:layout_marginEnd="99dp"
         android:background="@drawable/estilo_bt_redondo"
+        android:onClick="atualizarDados"
         android:text="Atualizar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btExcluirConta"
