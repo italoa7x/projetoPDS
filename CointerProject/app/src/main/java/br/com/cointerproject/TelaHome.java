@@ -1,98 +1,92 @@
 package br.com.cointerproject;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.core.view.GravityCompat;
-import com.google.android.material.navigation.NavigationView;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.Switch;
+import android.widget.TextView;
+
 import com.google.firebase.auth.FirebaseAuth;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import android.view.Menu;
 
-import br.com.cointerproject.ui.fragmentos.FragmentoListarInvestimentos;
-import br.com.cointerproject.ui.fragmentos.FragmentNovoInvestimento;
-import br.com.cointerproject.ui.fragmentos.FragmentoHome;
-import br.com.cointerproject.ui.fragmentos.FragmentoValoresMonetarios;
 import br.com.cointerproject.ui.login.TelaLogin;
+import br.com.cointerproject.view.CadastroInvActivity;
+import br.com.cointerproject.view.ListaInvestimentos;
+import br.com.cointerproject.view.TelaConsultaValores;
 
+public class TelaHome extends AppCompatActivity {
 
-public class TelaHome extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
-
-    private DrawerLayout drawer;
+    ListView list;
+    String[] menu = {"Home","Perfil","Meus Investimentos","Novo Investimento","Consultar Valores","Logout"};
+    Integer[] imagens = {R.drawable.home,R.drawable.user, R.drawable.lista,
+    R.drawable.novo, R.drawable.valor,R.drawable.logout};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tela_home);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        setContentView(R.layout.activity_tela_home2);
+        list = findViewById(R.id.listViewMenu);
+        CustomAdaptor customAdaptor = new CustomAdaptor();
+        list.setAdapter(customAdaptor);
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                if(position==0){
+                    Intent it = new Intent();
+                    startActivity(it);
+                }
+                else if(position==1){
+                    Intent it = new Intent();
+                    startActivity(it);
+                }
+                else if(position==2){
+                    Intent it = new Intent(TelaHome.this, ListaInvestimentos.class);
+                    startActivity(it);
+                }
+                else if (position==3){
+                    Intent it = new Intent(TelaHome.this, CadastroInvActivity.class);
+                    startActivity(it);
+                }
+                else if (position==4){
+                    Intent it = new Intent(TelaHome.this, TelaConsultaValores.class);
+                    startActivity(it);
+                }
+                else if (position==5){
+                    Intent it = new Intent(TelaHome.this, TelaLogin.class);
+                    FirebaseAuth.getInstance().signOut();
+                    startActivity(it);
+                }
 
-        drawer = findViewById(R.id.drawer_layout);
-        NavigationView navigation = findViewById(R.id.nav_view);
-        navigation.setNavigationItemSelectedListener(this);
-
-        ActionBarDrawerToggle toogler = new ActionBarDrawerToggle(this, drawer, toolbar,
-                R.string.abrir_navegacao, R.string.fechar_navegacao);
-
-        drawer.addDrawerListener(toogler);
-        toogler.syncState();
-
-        if(savedInstanceState == null){
-            getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,
-                    new FragmentoValoresMonetarios()).commit();
-            navigation.setCheckedItem(R.id.op_valores_monetarios);
-        }
+            }
+        });
     }
+    class CustomAdaptor extends BaseAdapter {
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.tela_home, menu);
-        return true;
-    }
-
-
-    @Override
-    public void onBackPressed() {
-        DrawerLayout drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawerLayout.isDrawerOpen(GravityCompat.START)){
-            drawerLayout.closeDrawer(GravityCompat.START);
-        }else {
-            super.onBackPressed();
+        public int getCount(){
+            return imagens.length;
         }
-    }
-
-
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-        switch(menuItem.getItemId()){
-            case R.id.op_novo_investimento:
-                getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,
-                        new FragmentNovoInvestimento()).commit();
-                break;
-            case R.id.op_valores_monetarios:
-                getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,
-                        new FragmentoValoresMonetarios()).commit();
-                break;
-
-
-            case R.id.op_meus_investimentos:
-                getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,
-                        new FragmentoListarInvestimentos()).commit();
-                break;
-
-            case R.id.op_logof:
-                FirebaseAuth.getInstance().signOut();
-                Intent it = new Intent(TelaHome.this, TelaLogin.class);
-                startActivity(it);
-                break;
-
+        public Object getItem(int postion){
+            return null;
         }
-        drawer.closeDrawer(GravityCompat.START);
-        return true;
+
+        @Override
+        public long getItemId(int position) {
+            return 0;
+        }
+        public View getView(int position, View convertView, ViewGroup parent){
+            View view = getLayoutInflater().inflate(R.layout.custom_layout, null);
+            ImageView imageView = view.findViewById(R.id.imageView4);
+            TextView textView = view.findViewById(R.id.menuText);
+            imageView.setImageResource(imagens[position]);
+            textView.setText(menu[position]);
+            return view;
+        }
     }
 }
+
