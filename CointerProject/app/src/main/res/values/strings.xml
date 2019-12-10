@@ -34,4 +34,6 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_tela_home">telaHome</string>
+    <string name="abrir_navegacao">Abrir navegação</string>
+    <string name="fechar_navegacao">Fechar navegação</string>
 </resources>
