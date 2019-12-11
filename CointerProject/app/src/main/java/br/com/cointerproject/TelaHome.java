@@ -42,7 +42,7 @@ public class TelaHome extends AppCompatActivity {
                     startActivity(it);
                 }
                 else if(position==1){
-                    Intent it = new Intent();
+                    Intent it = new Intent(TelaHome.this, MeuPerfil.class);
                     startActivity(it);
                 }
                 else if(position==2){

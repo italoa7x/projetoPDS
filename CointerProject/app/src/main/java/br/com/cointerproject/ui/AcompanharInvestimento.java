@@ -64,14 +64,17 @@ public class AcompanharInvestimento extends AppCompatActivity {
         }
         double lucro = Double.parseDouble(bvmf.getText().toString())-parametro.getValor();
         double brutoN = lucro+parametro.getValor();
+        double iofN = lucro*0.0638;
+        double valorIr = lucro *0.15;
+        double valorLiquido = (brutoN-iofN)-valorIr;
         moeda.setText(parametro.getMoeda());
         status.setText(parametro.getStatus());
         valor.setText(String.valueOf(parametro.getValor()));
         retorno.setText(String.valueOf(lucro));
         bruto.setText(String.valueOf(brutoN));
-        liquido.setText();
-        iof.setText();
-        ir.setText();
+        liquido.setText(String.valueOf(valorLiquido));
+        iof.setText(String.valueOf(iofN));
+        ir.setText(String.valueOf(valorIr));
 
         excluir = findViewById(R.id.button_excluir);
         excluir.setOnClickListener(new View.OnClickListener() {
