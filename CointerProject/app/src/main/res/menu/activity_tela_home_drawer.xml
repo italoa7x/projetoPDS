@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item android:title="Meu perfil" android:icon="@drawable/icone_perfil">
+            <menu>
+                <item
+                    android:id="@+id/op_home"
+                    android:title="Home"
+                    android:icon="@drawable/ic_home_black_24dp"
+                    />
+
+                <item
+                    android:id="@+id/op_perfil"
+                    android:title="Perfil"
+                    android:icon="@drawable/icone_perfil"
+                    />
+
+                <item
+                    android:id="@+id/op_meus_investimentos"
+                    android:title="Meus investimentos"
+                    android:icon="@drawable/icone_listar"
+                    />
+            </menu>
+        </item>
+
+        <item android:title="Investimentos" android:icon="@drawable/icone_dinheiro">
+            <menu>
+                <item
+                    android:id="@+id/op_novo_investimento"
+                    android:title="Novo investimento"
+                    android:icon="@drawable/icone_novo_investimento"
+                    />
+                <item
+                    android:id="@+id/op_valores_monetarios"
+                    android:title="Consultar valores"
+                    android:icon="@drawable/icone_dinheiro"
+                    />
+
+            </menu>
+        </item>
+
+        <item android:title="Sistema" android:icon="@drawable/icone_sistema">
+            <menu>
+                <item
+                    android:id="@+id/op_logof"
+                    android:title="Logof"
+                    android:icon="@drawable/icone_logof"
+                    />
+            </menu>
+        </item>
+    </group>
+
+</menu>
