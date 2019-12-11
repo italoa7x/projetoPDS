@@ -28,7 +28,6 @@ public class AcompanharInvestimento extends AppCompatActivity {
     private TextView bvmf;
     private TextView retorno;
     private Button excluir;
-    private Button editar;
     private Button finalizar;
 
     @Override
@@ -70,18 +69,16 @@ public class AcompanharInvestimento extends AppCompatActivity {
             }
         });
 
-        editar = findViewById(R.id.button_editar);
-        editar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-            }
-        });
 
         finalizar = findViewById(R.id.button_finalizar);
         finalizar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                DatabaseReference ref = FirebaseDatabase.getInstance().getReference()
+                        .child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(parametro.getId());
+                ref.updateChildren();
+
 
             }
         });
