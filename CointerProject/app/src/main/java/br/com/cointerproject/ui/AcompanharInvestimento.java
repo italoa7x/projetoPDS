@@ -14,6 +14,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import br.com.cointerproject.R;
 import br.com.cointerproject.TelaHome;
+import br.com.cointerproject.fachadaRequisicoes.FachadaRequisicoes;
 import br.com.cointerproject.model.Investimento;
 import br.com.cointerproject.model.Status;
 
@@ -55,10 +56,22 @@ public class AcompanharInvestimento extends AppCompatActivity {
         Intent it = getIntent();
         final Investimento parametro = (Investimento) it.getSerializableExtra("investimento");
 
-
+        FachadaRequisicoes fachada = new FachadaRequisicoes();
+        try {
+            fachada.consultar(getApplicationContext(),parametro.getMoeda(),bvmf);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        double lucro = Double.parseDouble(bvmf.getText().toString())-parametro.getValor();
+        double brutoN = lucro+parametro.getValor();
         moeda.setText(parametro.getMoeda());
         status.setText(parametro.getStatus());
         valor.setText(String.valueOf(parametro.getValor()));
+        retorno.setText(String.valueOf(lucro));
+        bruto.setText(String.valueOf(brutoN));
+        liquido.setText();
+        iof.setText();
+        ir.setText();
 
         excluir = findViewById(R.id.button_excluir);
         excluir.setOnClickListener(new View.OnClickListener() {
