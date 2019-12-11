@@ -15,8 +15,7 @@ import java.util.List;
 
 import br.com.cointerproject.R;
 import br.com.cointerproject.model.Investimento;
-import br.com.cointerproject.view.Home;
-import br.com.cointerproject.view.MainActivity;
+
 
 public class RecyclerConfig {
     private Context context;

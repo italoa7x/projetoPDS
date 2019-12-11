@@ -68,7 +68,7 @@ public class MeuPerfil extends AppCompatActivity {
 
     // Método de excluir conta do usuário.
     public void excluirConta(View view){
-        AuthCredential credencial = EmailAuthProvider.getCredential(usuario.getEmail(),/*/coloca a senha aqui/*/);
+        AuthCredential credencial = EmailAuthProvider.getCredential(usuario.getEmail(),""/*/coloca a senha aqui/*/);
         usuario.reauthenticate(credencial);
         usuario.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override

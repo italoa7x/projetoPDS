@@ -9,6 +9,7 @@ import android.os.Bundle;
 import java.util.List;
 
 import br.com.cointerproject.R;
+import br.com.cointerproject.TelaHome;
 import br.com.cointerproject.model.FirebaseHelper;
 import br.com.cointerproject.model.Investimento;
 import br.com.cointerproject.ui.AcompanharInvestimento;
@@ -49,7 +50,7 @@ public class ListaInvestimentos extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        Intent it = new Intent(ListaInvestimentos.this, Home.class);
+        Intent it = new Intent(ListaInvestimentos.this, TelaHome.class);
         startActivity(it);
     }
 }
