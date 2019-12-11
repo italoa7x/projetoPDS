@@ -12,8 +12,11 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -48,13 +51,12 @@ public class MeuPerfil extends AppCompatActivity {
         String novoEmail = areaEmail.getText().toString();
 
         // Atualiza os dados do usuário.
-        DatabaseReference references = FirebaseDatabase.getInstance().getReference();
-        references.child(usuario.getUid());
-        Usuario u = new Usuario();
-        u.setNome(novoNome);
-        u.setEmail(novoEmail);
-
-        references.push().setValue(u);
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        user.updateEmail(novoEmail);
+        UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                .setDisplayName(novoNome)
+                .build();
+        user.updateProfile(profileUpdates);
 
     }
 
@@ -66,6 +68,8 @@ public class MeuPerfil extends AppCompatActivity {
 
     // Método de excluir conta do usuário.
     public void excluirConta(View view){
+        AuthCredential credencial = EmailAuthProvider.getCredential(usuario.getEmail(),/*/coloca a senha aqui/*/);
+        usuario.reauthenticate(credencial);
         usuario.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {

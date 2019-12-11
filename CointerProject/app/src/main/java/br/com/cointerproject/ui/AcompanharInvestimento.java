@@ -15,6 +15,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import br.com.cointerproject.R;
 import br.com.cointerproject.TelaHome;
 import br.com.cointerproject.model.Investimento;
+import br.com.cointerproject.model.Status;
 
 
 public class AcompanharInvestimento extends AppCompatActivity {
@@ -83,6 +84,13 @@ public class AcompanharInvestimento extends AppCompatActivity {
         finalizar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                parametro.setStatus(Status.FINALIZADO.name());
+                DatabaseReference ref = FirebaseDatabase.getInstance().getReference()
+                        .child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(parametro.getId());
+                ref.setValue(parametro);
+                Intent it = new Intent(AcompanharInvestimento.this, TelaHome.class);
+                startActivity(it);
+
 
             }
         });
