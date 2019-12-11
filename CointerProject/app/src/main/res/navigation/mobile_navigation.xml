@@ -22,4 +22,25 @@
         android:name="br.com.cointerproject.view.ui.notifications.NotificationsFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_notifications" />
+    app:startDestination="@id/cadastroInvActivity">
+    <activity
+        android:id="@+id/cadastroInvActivity"
+        android:name="br.com.cointerproject.view.CadastroInvActivity"
+        android:label="activity_cadastro_investimento"
+        tools:layout="@layout/activity_cadastro_investimento" />
+    <activity
+        android:id="@+id/telaConsultaValores"
+        android:name="br.com.cointerproject.view.TelaConsultaValores"
+        android:label="activity_tela_consulta_valores"
+        tools:layout="@layout/activity_tela_consulta_valores" />
+    <activity
+        android:id="@+id/telaLogin"
+        android:name="br.com.cointerproject.ui.login.TelaLogin"
+        android:label="activity_tela_login"
+        tools:layout="@layout/activity_tela_login" />
+    <activity
+        android:id="@+id/listaInvestimentos"
+        android:name="br.com.cointerproject.view.ListaInvestimentos"
+        android:label="activity_lista_investimentos"
+        tools:layout="@layout/activity_lista_investimentos" />
 </navigation>
