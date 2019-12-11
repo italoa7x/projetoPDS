@@ -3,6 +3,7 @@ package br.com.cointerproject.view;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import java.util.List;
@@ -10,6 +11,7 @@ import java.util.List;
 import br.com.cointerproject.R;
 import br.com.cointerproject.model.FirebaseHelper;
 import br.com.cointerproject.model.Investimento;
+import br.com.cointerproject.ui.AcompanharInvestimento;
 import br.com.cointerproject.ui.RecyclerConfig;
 
 public class ListaInvestimentos extends AppCompatActivity {
@@ -41,5 +43,13 @@ public class ListaInvestimentos extends AppCompatActivity {
 
             }
         });
+    }
+
+
+
+    @Override
+    public void onBackPressed() {
+        Intent it = new Intent(ListaInvestimentos.this, Home.class);
+        startActivity(it);
     }
 }

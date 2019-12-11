@@ -43,4 +43,8 @@ public class TelaLogin extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), errorString, Toast.LENGTH_SHORT).show();
     }
 
+    @Override
+    public void onBackPressed() {
+
+    }
 }
