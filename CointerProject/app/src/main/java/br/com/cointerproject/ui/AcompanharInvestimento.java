@@ -13,8 +13,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import br.com.cointerproject.R;
+import br.com.cointerproject.TelaHome;
 import br.com.cointerproject.model.Investimento;
-import br.com.cointerproject.view.Home;
+
 
 public class AcompanharInvestimento extends AppCompatActivity {
     private TextView moeda;
@@ -65,7 +66,7 @@ public class AcompanharInvestimento extends AppCompatActivity {
                 DatabaseReference ref = FirebaseDatabase.getInstance().getReference()
                         .child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(parametro.getId());
                 ref.removeValue();
-                Intent it = new Intent(AcompanharInvestimento.this, Home.class);
+                Intent it = new Intent(AcompanharInvestimento.this, TelaHome.class);
                 startActivity(it);
             }
         });
